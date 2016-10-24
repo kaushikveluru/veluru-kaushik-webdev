@@ -1,0 +1,14 @@
+body
+{
+	padding-top: 60px;
+}
+
+.navbar-default
+{
+	background-color: #3d96bd;
+}
+
+.navbar-default .navbar-brand
+{
+	color:white;
+}

@@ -2,44 +2,65 @@
 <html>
 <head>
 	<title>Profile</title>
-	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/profile.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        Profile 
-        <button type="button" class="btn btn-default" aria-label="OK">
-        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        </button>
-      </a>
+      <a class="navbar-brand" href="#">Profile</a> 
+      <p class="navbar-text pull-right">
+      	<a href="#" class="navbar-link">
+      		<span class="glyphicon glyphicon-ok"></span>        	
+	
+      	</a>
+      </p>      
     </div>
   </div>
 </nav>
 	<div class="container-fluid">
 		<form action="login.html">
-			<label for="username">Username</label>
-			<input id="username" type="text" class="form-control" placeholder="username"/>
-			<label for="email">Email</label>
-			<input id="email" type="email" class="form-control" placeholder="username@gmail.com"/>
-			<label for="firstname">First Name</label>
-			<input id="firstname" type="text" class="form-control" placeholder="firstname"/>
-			<label for="lastname">Last Name</label>
-			<input id="lastname" type="text" class="form-control" placeholder="lastname"/>
-			<a href="../website/website-list.html" role="button" class="btn btn-primary form-control">Websites</a>
-			<button type="submit" class="btn-danger form-control">Logout</button>
+		
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input id="username" type="text" class="form-control" placeholder="username"/>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" type="email" class="form-control" placeholder="username@gmail.com"/>
+			</div>
+
+			<div class="form-group">
+				<label for="firstname">First Name</label>
+				<input id="firstname" type="text" class="form-control" placeholder="firstname"/>
+			</div>
+
+			<div class="form-group">
+				<label for="lastname">Last Name</label>
+				<input id="lastname" type="text" class="form-control" placeholder="lastname"/>
+			</div>
+
+			<div class="form-group">
+				<a href="../website/website-list.html" role="button" class="btn btn-primary form-control">Websites</a>
+			</div>
+
+			<div class="form-group">
+				<button type="submit" class="btn-danger form-control">Logout</button>
+			</div>
+
 		</form>
 	</div>
 	<nav class="navbar navbar-default navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <button type="button" class="btn btn-default" aria-label="user">
-        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        </button>
-      </a>
+      <a class="navbar-brand" href="#"></a>
+       <p class="navbar-text pull-right">
+       	<a href="#" class="navbar-link">
+			<span class="glyphicon glyphicon-user"></span>
+       		
+       	</a>
+      </p>
     </div>
   </div>
 </nav>
