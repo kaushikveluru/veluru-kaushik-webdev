@@ -3,12 +3,23 @@
 <head>
 	<title>Profile</title>
 	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
 <body>
-	<div class="container">
-		<h1>Profile</h1>
-		
-		<form action="profile.html">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Profile 
+        <button type="button" class="btn btn-default" aria-label="OK">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>
+	<div class="container-fluid">
+		<form action="login.html">
 			<label for="username">Username</label>
 			<input id="username" type="text" class="form-control" placeholder="username"/>
 			<label for="email">Email</label>
@@ -17,9 +28,22 @@
 			<input id="firstname" type="text" class="form-control" placeholder="firstname"/>
 			<label for="lastname">Last Name</label>
 			<input id="lastname" type="text" class="form-control" placeholder="lastname"/>
-			<button type="submit" class="btn-primary form-control">Websites</button>
+			<a href="../website/website-list.html" role="button" class="btn btn-primary form-control">Websites</a>
 			<button type="submit" class="btn-danger form-control">Logout</button>
 		</form>
 	</div>
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <button type="button" class="btn btn-default" aria-label="user">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </button>
+      </a>
+    </div>
+  </div>
+</nav>
+</nav>
+
 </body>
 </html>
