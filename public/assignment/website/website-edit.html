@@ -2,44 +2,143 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,intial-scale=1">
-	<title>Edit Website</title>
+	<title>New Website</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 <div class="container">
+
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<a href="website-list.html" class="navbar-text pull-left" href="#">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a href="#" class="navbar-brand">Edit Website</a>
-			<a class="navbar-text pull-right" href="website-list.html">
-				<span class="glyphicon glyphicon-ok"></span>
-			</a>
+			<div class="hidden-xs">  <!-- Not visible on extra small screens-->
+				<div class="col-sm-4 left-full">
+					<a href="../user/profile.html" class="navbar-text">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a href="#" class="navbar-brand">Websites</a>
+					<a class="navbar-text pull-right" href="website-new.html">
+						<span class="glyphicon glyphicon-plus"></span>
+					</a>
+				</div>
+				<div class="col-sm-8 no-padding-right">
+					<a href="#" class="navbar-brand">New Website</a>
+					<a class="navbar-text pull-right" href="website-list.html">
+						<span class="glyphicon glyphicon-ok"></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="visible-xs"> <!-- Visible only on extra small screens-->
+				<a href="../user/profile.html" class="navbar-text pull-left">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a href="#" class="navbar-brand">New Website</a>
+				<a class="navbar-text pull-right" href="website-list.html">
+					<span class="glyphicon glyphicon-ok"></span>
+				</a>
+			</div>
+
+
 		</div>
 	</nav>
 
 
 
+	<div class="hidden-xs">
+		<vr></vr>
+		<div class="col-sm-4">
+			<div class="row">
+				<p class="navbar-text pull-left">
+					<a href="../page/page-list.html" class="navbar-link">Address Book App</a>
+				</p>
+				<p class="navbar-text pull-right">
+					<a href="website-edit.html" class="navbar-link">
+						<span class="glyphicon glyphicon-cog"></span>
 
-	<form>
-		<div class="form-group">
-			<label for="name">Website Name</label>
-			<input id="name" type="text" class="form-control" placeholder="Blogger"/>
+					</a>
+				</p>
+
+			</div>
+
+			<div class="row">
+				<p class="navbar-text pull-left">
+					<a href="../page/page-list.html" class="navbar-link">Blogger</a>
+				</p>
+				<p class="navbar-text pull-right">
+					<a href="website-edit.html" class="navbar-link">
+						<span class="glyphicon glyphicon-cog"></span>
+
+					</a>
+				</p>
+
+			</div>
+
+			<div class="row">
+
+				<p class="navbar-text pull-left">
+					<a href="../page/page-list.html" class="navbar-link">Blogglog App</a>
+				</p>
+				<p class="navbar-text pull-right">
+					<a href="website-edit.html" class="navbar-link">
+						<span class="glyphicon glyphicon-cog"></span>
+
+					</a>
+				</p>
+
+			</div>
+
+			<div class="row">
+				<p class="navbar-text pull-left">
+					<a href="../page/page-list.html" class="navbar-link">Script Testing App</a>
+				</p>
+				<p class="navbar-text pull-right">
+					<a href="website-edit.html" class="navbar-link">
+						<span class="glyphicon glyphicon-cog"></span>
+
+					</a>
+				</p>
+
+			</div>
+
 		</div>
+		<div class="col-sm-8">
+			<form>
+				<div class="form-group">
+					<label for="name">Website Name</label>
+					<input id="name" type="text" class="form-control" placeholder="Blogger"/>
+				</div>
 
-		<div class="form-group">
-			<label for="description">Website Description</label>
-			<textarea id="description" class="form-control" placeholder="Description"></textarea>
+				<div class="form-group">
+					<label for="description">Website Description</label>
+					<textarea id="description" class="form-control" placeholder="Description"></textarea>
+				</div>
+
+				<div class="form-group">
+					<a href="website-list.html" role="button" class="btn btn-danger form-control">Delete</a>
+				</div>
+			</form>
 		</div>
+	</div>
 
-		<div class="form-group">
-			<a href="website-list.html" role="button" class="btn btn-danger form-control">Delete</a>
-		</div>
+	<div class="visible-xs">
+		<form>
+			<div class="form-group">
+				<label for="name">Website Name</label>
+				<input id="name" type="text" class="form-control" placeholder="Blogger"/>
+			</div>
 
+			<div class="form-group">
+				<label for="description">Website Description</label>
+				<textarea id="description" class="form-control" placeholder="Description"></textarea>
+			</div>
 
-	</form>
+			<div class="form-group">
+				<a href="website-list.html" role="button" class="btn btn-danger form-control">Delete</a>
+			</div>
+		</form>
+	</div>
+
 
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
@@ -49,6 +148,7 @@
 			</a>
 		</div>
 	</nav>
+
 </div>
 </body>
 </html>
