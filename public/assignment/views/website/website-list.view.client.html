@@ -3,11 +3,11 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<a href="../user/profile.html" class="navbar-text pull-left">
+			<a href="#/user/:uid" class="navbar-text pull-left">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
 			<a href="#" class="navbar-brand">Websites</a>
-			<a class="navbar-text pull-right" href="website-new.html">
+			<a class="navbar-text pull-right" href="#/user/:uid/website/new">
 				<span class="glyphicon glyphicon-plus"></span>
 			</a>
 		</div>
@@ -15,10 +15,36 @@
 
 	<div class="row">
 		<p class="navbar-text pull-left">
-			<a href="../page/page-list.html" class="navbar-link">Address Book App</a>
+			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Address Book App</a>
 		</p>
 		<p class="navbar-text pull-right">
-			<a href="website-edit.html" class="navbar-link">
+			<a href="#/user/:uid/website/:wid" class="navbar-link">
+				<span class="glyphicon glyphicon-cog"></span>
+			</a>
+		</p>
+
+	</div>
+
+	<div class="row">
+		<p class="navbar-text pull-left">
+			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogger</a>
+		</p>
+		<p class="navbar-text pull-right">
+			<a href="#/user/:uid/website/:wid" class="navbar-link">
+				<span class="glyphicon glyphicon-cog"></span>
+
+			</a>
+		</p>
+
+	</div>
+
+	<div class="row">
+
+		<p class="navbar-text pull-left">
+			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogglog App</a>
+		</p>
+		<p class="navbar-text pull-right">
+			<a href="#/user/:uid/website/:wid" class="navbar-link">
 				<span class="glyphicon glyphicon-cog"></span>
 
 			</a>
@@ -28,37 +54,10 @@
 
 	<div class="row">
 		<p class="navbar-text pull-left">
-			<a href="../page/page-list.html" class="navbar-link">Blogger</a>
+			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Script Testing App</a>
 		</p>
 		<p class="navbar-text pull-right">
-			<a href="website-edit.html" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-
-		<p class="navbar-text pull-left">
-			<a href="../page/page-list.html" class="navbar-link">Blogglog App</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="website-edit.html" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="../page/page-list.html" class="navbar-link">Script Testing App</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="website-edit.html" class="navbar-link">
+			<a href="#/uesr/:uid/website/:wid" class="navbar-link">
 				<span class="glyphicon glyphicon-cog"></span>
 
 			</a>
@@ -68,7 +67,7 @@
 
 	<nav class="nav navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="../user/profile.html">
+			<a class="navbar-text pull-right" href="#/user/:uid">
 				<span class="glyphicon glyphicon-user"></span>
 			</a>
 		</div>

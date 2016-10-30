@@ -5,28 +5,28 @@
 		<div class=" container-fluid">
 			<div class="hidden-xs">  <!-- Not visible on extra small screens-->
 				<div class="col-sm-4 left-full">
-					<a href="../user/profile.html" class="navbar-text">
+					<a href="#/user/:uid" class="navbar-text">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</a>
 					<a href="#" class="navbar-brand">Websites</a>
-					<a class="navbar-text pull-right" href="website-new.html">
+					<a class="navbar-text pull-right" href="#/user/:uid/website/new">
 						<span class="glyphicon glyphicon-plus"></span>
 					</a>
 				</div>
 				<div class="col-sm-8 no-padding-right">
 					<a href="#" class="navbar-brand">New Website</a>
-					<a class="navbar-text pull-right" href="website-list.html">
+					<a class="navbar-text pull-right" href="#/user/:uid/website">
 						<span class="glyphicon glyphicon-ok"></span>
 					</a>
 				</div>
 			</div>
 
 			<div class="visible-xs"> <!-- Visible only on extra small screens-->
-				<a href="../user/profile.html" class="navbar-text pull-left">
+				<a href="#/user/:uid" class="navbar-text pull-left">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
 				<a href="#" class="navbar-brand">New Website</a>
-				<a class="navbar-text pull-right" href="website-list.html">
+				<a class="navbar-text pull-right" href="#/user/:uid/website">
 					<span class="glyphicon glyphicon-ok"></span>
 				</a>
 			</div>
@@ -42,10 +42,10 @@
 		<div class="col-sm-4">
 			<div class="row">
 				<p class="navbar-text pull-left">
-					<a href="../page/page-list.html" class="navbar-link">Address Book App</a>
+					<a href="#/user/:uid/website/:wid/page" class="navbar-link">Address Book App</a>
 				</p>
 				<p class="navbar-text pull-right">
-					<a href="website-edit.html" class="navbar-link">
+					<a href="#/user/:uid/website/:wid" class="navbar-link">
 						<span class="glyphicon glyphicon-cog"></span>
 
 					</a>
@@ -55,10 +55,10 @@
 
 			<div class="row">
 				<p class="navbar-text pull-left">
-					<a href="../page/page-list.html" class="navbar-link">Blogger</a>
+					<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogger</a>
 				</p>
 				<p class="navbar-text pull-right">
-					<a href="website-edit.html" class="navbar-link">
+					<a href="#/user/:uid/website/:wid" class="navbar-link">
 						<span class="glyphicon glyphicon-cog"></span>
 
 					</a>
@@ -69,10 +69,10 @@
 			<div class="row">
 
 				<p class="navbar-text pull-left">
-					<a href="../page/page-list.html" class="navbar-link">Blogglog App</a>
+					<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogglog App</a>
 				</p>
 				<p class="navbar-text pull-right">
-					<a href="website-edit.html" class="navbar-link">
+					<a href="#/user/:uid/website/:wid" class="navbar-link">
 						<span class="glyphicon glyphicon-cog"></span>
 
 					</a>
@@ -82,10 +82,10 @@
 
 			<div class="row">
 				<p class="navbar-text pull-left">
-					<a href="../page/page-list.html" class="navbar-link">Script Testing App</a>
+					<a href="#/user/:uid/website/:wid/page" class="navbar-link">Script Testing App</a>
 				</p>
 				<p class="navbar-text pull-right">
-					<a href="website-edit.html" class="navbar-link">
+					<a href="#/user/:uid/website/:wid" class="navbar-link">
 						<span class="glyphicon glyphicon-cog"></span>
 
 					</a>
@@ -107,7 +107,7 @@
 				</div>
 
 				<div class="form-group">
-					<a href="website-list.html" role="button" class="btn btn-danger form-control">Delete</a>
+					<a href="#/user/:uid/website" role="button" class="btn btn-danger form-control">Delete</a>
 				</div>
 			</form>
 		</div>
@@ -126,7 +126,7 @@
 			</div>
 
 			<div class="form-group">
-				<a href="website-list.html" role="button" class="btn btn-danger form-control">Delete</a>
+				<a href="#/user/:uid/website" role="button" class="btn btn-danger form-control">Delete</a>
 			</div>
 		</form>
 	</div>
@@ -135,7 +135,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="../user/profile.html">
+			<a class="navbar-text pull-right" href="#/user/:uid">
 				<span class="glyphicon glyphicon-user"></span>
 			</a>
 		</div>
