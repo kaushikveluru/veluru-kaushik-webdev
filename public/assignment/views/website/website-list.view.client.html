@@ -13,56 +13,8 @@
 		</div>
 	</nav>
 
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Address Book App</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogger</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogglog App</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page" class="navbar-link">Script Testing App</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/uesr/:uid/website/:wid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
+	<div ng-repeat="website in model.websites">
+		{{website.name}}
 	</div>
 
 	<nav class="nav navbar-default navbar-fixed-bottom">

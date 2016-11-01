@@ -13,68 +13,9 @@
 		</div>
 	</nav>
 
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">Blog Post</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid/page/:pid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
+	<div ng-repeat="page in model.pages">
 
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">Blogs</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid/page/:pid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">Home</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid/page/:pid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">About</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid/page/:pid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
-
-	</div>
-
-	<div class="row">
-		<p class="navbar-text pull-left">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-link">Contact Us</a>
-		</p>
-		<p class="navbar-text pull-right">
-			<a href="#/user/:uid/website/:wid/page/:pid" class="navbar-link">
-				<span class="glyphicon glyphicon-cog"></span>
-
-			</a>
-		</p>
+		{{page.name}}
 
 	</div>
 
