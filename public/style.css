@@ -1,0 +1,43 @@
+body
+{
+    padding-top:120px;
+}
+
+.navbar-fixed-top
+{
+    background-color: #222222;/*#3c3c3c;*/
+    height: 100px;
+}
+
+
+.navbar-brand {
+    color: #dbdbdb;
+    text-align: center;
+}
+
+.profile-name
+{
+    font-size: 24px;
+    color: white;
+}
+
+.profile-image{
+
+    width:  90px;
+    height : 90px;
+    padding : 10px;
+}
+
+.row
+{
+    padding: 5px;
+}
+
+.navbar-fixed-bottom{
+    background-color: #222222;
+}
+
+.pull-right
+{
+
+}
