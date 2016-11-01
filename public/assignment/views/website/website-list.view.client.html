@@ -13,9 +13,14 @@
 		</div>
 	</nav>
 
-	<div ng-repeat="website in model.websites">
-		{{website.name}}
-	</div>
+	<ul class="list-group">
+		<li ng-repeat="website in model.websites" class="list-group-item">
+			<a href="#">{{website.name}}</a>
+			<a class="pull-right" href="#/user/:uid/website/:wid/{{website._id}}">
+				<span class="glyphicon glyphicon-cog"></span>
+			</a>
+		</li>
+	</ul>
 
 	<nav class="nav navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">

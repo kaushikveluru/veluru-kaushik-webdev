@@ -7,6 +7,7 @@
 
     function LoginController(){
         var vm = this;
+        console.log("hello from login controller");
     }
 
     function RegisterController(){
@@ -15,5 +16,6 @@
 
     function ProfileController(){
         var vm = this;
+
     }
 })();
