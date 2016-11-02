@@ -41,8 +41,24 @@
         }
     }
 
-    function RegisterController(){
+    function RegisterController(UserService){
         var vm = this;
+        vm.register = register;
+
+        function register(username,password,verifypassword)
+        {
+            console.log("in register method")
+            if(password != verifypassword)
+            {
+                vm.error = "passwords do not match"
+            }
+            else
+            {
+                var user = {"_id":"999", "username: ":username, "password": password, "firstName": username,"lastName":username, "email":username+"@gmail.com" }
+
+                UserService.createUser(user);
+            }
+        }
     }
 
     function ProfileController($routeParams,UserService) {
