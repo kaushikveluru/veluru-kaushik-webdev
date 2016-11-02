@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("WebSiteService",WebSiteService)
 
-    function WebSiteServcie(){
+    function WebSiteServcie(UserService){
         var websites=[
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -24,25 +24,55 @@
         return api;
 
         function createWebsite(userId,website){
+            website.developerId = userId;
+            websites.push(website);
 
         }
 
         function findWebsitesByUser(userId){
-
+            for(var w in websites)
+            {
+                if(websites[u].developerId === userId)
+                {
+                    return websites[u];
+                }
+            }
+            return null;
         }
 
 
 
         function findWebsiteById(websiteId){
+            for(var w in websites)
+            {
+                if(websites[u]._id === websiteId)
+                {
+                    return websites[u];
+                }
 
+            }
+            return null;
         }
 
         function updateWebsite(websiteId,website){
 
+            for(var w in websites)
+            {
+                if(websites[w]._id === websiteId)
+                {
+                    websites[w] = website;
+                }
+            }
         }
 
         function deleteWebsite(websiteId){
-
+            for(var w in websites)
+            {
+                if(websites[w]._id === websiteId)
+                {
+                    websites[w].remove();
+                }
+            }
         }
     }
 })();
