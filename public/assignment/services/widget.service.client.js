@@ -29,22 +29,51 @@
         return api;
 
         function createWidget(pageId,widget){
-
+            widget.pageId = pageId;
+            widgets.push(widget);
         }
 
         function findWidgetsByPageId(pageId){
-
+            for(var w in widgets)
+            {
+                if(widgets[w].pageId === pageId)
+                {
+                    return widget;
+                }
+            }
+            return null;
         }
 
         function findWidgetById(widgetId){
-
+            for(var w in widgets)
+            {
+                if(widgets[w]._id === widgetId)
+                {
+                    return widget;
+                }
+            }
+            return null;
         }
 
         function updateWidget(widgetId,widget){
-
+            for(var w in widgets)
+            {
+                if(widgets[w]._id === widgetId)
+                {
+                     widgets[w]=widget;
+                }
+            }
+            
         }
 
         function deleteWidget(widgetId){
+            for(var w in widgets)
+            {
+                if(widgets[w]._id === widgetId)
+                {
+                    widgets[w].remove();
+                }
+            }
 
         }
 
