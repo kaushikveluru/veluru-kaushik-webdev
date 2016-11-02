@@ -25,10 +25,11 @@
 
         function createUser(user){
 
-           var index = users.length+1;
+            var index = users.length+1;
             user._id=index+"";
             users.push(user)
-            
+
+            return user;
         }
 
         function findUserById(userId){

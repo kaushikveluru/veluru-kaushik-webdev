@@ -41,7 +41,7 @@
         }
     }
 
-    function RegisterController(UserService){
+    function RegisterController($location,UserService){
         var vm = this;
         vm.register = register;
 
@@ -54,9 +54,9 @@
             }
             else
             {
-                var user = {"_id":"999", "username: ":username, "password": password, "firstName": username,"lastName":username, "email":username+"@gmail.com" }
-
-                UserService.createUser(user);
+                var user = {_id: "999", username: username, password: password, firstName: username,   lastName: username, email: username+"@gmail.com" }
+                user = UserService.createUser(user);
+                $location.url("/user/"+user._id)
             }
         }
     }
@@ -66,10 +66,13 @@
         var vm = this;
         var uid = $routeParams.uid
 
+
         var user = UserService.findUserById(uid);
 
         if(user != null)
-        {
+        {   console.log("user id : "+user._id)
+            console.log("username: "+user.username)
+            console.log("password: "+user.password)
             vm.user = user;
         }
         else
