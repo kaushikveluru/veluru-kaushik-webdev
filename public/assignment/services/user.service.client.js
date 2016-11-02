@@ -23,25 +23,60 @@
         return api;
 
         function createUser(user){
-
+            users.push(user)
         }
 
         function findUserById(userId){
-
+            for(var u in users)
+            {
+                if(users[u]._id === userId)
+                {
+                    return users[u]
+                }
+            }
+            return null;
         }
         function findUserByName(username){
-
+            for(var u in users)
+            {
+                if(users[u].username === username)
+                {
+                    return users[u]
+                }
+            }
+            return null;
         }
 
         function userByCredentials(username,password){
-
+            for(var u in users)
+            {
+                if(users[u].username === username && users[u].password === password)
+                {
+                    return users[u]
+                }
+            }
+            return null;
         }
 
         function updateUser(userId, user){
 
+            for(var u in users)
+            {
+                if(users[u]._id === userId)
+                {
+                    users[u] = user;
+                }
+            }
         }
 
         function deleteUser(userId){
+            for(var u in users)
+            {
+                if(users[u]._id === userId)
+                {
+                    users[u].remove();
+                }
+            }
 
         }
 
