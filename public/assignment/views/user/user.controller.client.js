@@ -15,25 +15,29 @@
 
 
     function LoginController($location,UserService){
+        console.log("entering LoginController")
         var vm = this;
         vm.login = login;
 
 
         function login(username,password)
         {
+
             user = UserService.findUserByCredentials(username,password);
 
             if(user != null)
             {
-                if(user.password === vm.user.password)
+                if(user.username === username && user.password === password)
                 {
-                    $location.url("/user/"+user._id)
+                    uid = user._id;
+                    $location.url("/user/"+uid);
                 }
             }
             else
             {
-                vm.error="No such user"
+                vm.error="No such user exists";
             }
+
         }
     }
 
@@ -45,17 +49,18 @@
 
         var vm = this;
         var uid = $routeParams.uid
-        console.log("user id: "+uid)
 
-        for (var u in users)
+        var user = UserService.findUserById(uid);
+
+        if(user != null)
         {
-            if(users[u]._id === uid)
-            {
-                console.log("found user again in profile controller : ",users[u].username)
-                vm.user = users[u];
-                break;
-            }
+            vm.user = user;
         }
+        else
+        {
+            vm.error = "profile for user id: "+uid+" doesn't exist"
+        }
+
 
 
     }
