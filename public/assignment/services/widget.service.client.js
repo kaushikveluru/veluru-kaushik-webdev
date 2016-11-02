@@ -63,7 +63,7 @@
                      widgets[w]=widget;
                 }
             }
-            
+
         }
 
         function deleteWidget(widgetId){

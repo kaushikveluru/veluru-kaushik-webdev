@@ -1,9 +1,9 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .factory("WebSiteService",WebSiteService)
+        .factory("WebSiteService",WebSiteService);
 
-    function WebSiteServcie(UserService){
+    function WebSiteService(UserService){
         var websites=[
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },

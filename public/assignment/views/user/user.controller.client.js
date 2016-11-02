@@ -14,32 +14,26 @@
     ];
 
 
-    function LoginController($location){
+    function LoginController($location,UserService){
         var vm = this;
-        console.log("hello from login controller");
-
         vm.login = login;
+
+
         function login(username,password)
         {
+            user = UserService.findUserByCredentials(username,password);
 
-            var found = false;
-            for(var u in users)
+            if(user != null)
             {
-                user = users[u]
-                if(user.username === username && user.password === password)
+                if(user.password === vm.user.password)
                 {
-                    found = true;
-                    console.log("user found")
                     $location.url("/user/"+user._id)
-                    break;
                 }
             }
-            if(!found)
-            {   vm.error="No such user"
-                console.log("user not found")
+            else
+            {
+                vm.error="No such user"
             }
-
-
         }
     }
 
@@ -47,7 +41,7 @@
         var vm = this;
     }
 
-    function ProfileController($routeParams) {
+    function ProfileController($routeParams,UserService) {
 
         var vm = this;
         var uid = $routeParams.uid

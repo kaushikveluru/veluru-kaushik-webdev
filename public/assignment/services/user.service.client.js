@@ -2,6 +2,7 @@
     angular
         .module("WebAppMaker")
         .factory("UserService",UserService);
+
     function UserService()
     {
         var users=[
@@ -36,7 +37,7 @@
             }
             return null;
         }
-        function findUserByName(username){
+        function findUserByUserName(username){
             for(var u in users)
             {
                 if(users[u].username === username)
@@ -47,7 +48,7 @@
             return null;
         }
 
-        function userByCredentials(username,password){
+        function findUserByCredentials(username,password){
             for(var u in users)
             {
                 if(users[u].username === username && users[u].password === password)
