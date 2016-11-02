@@ -3,14 +3,12 @@
 <div class="container">
 
 
+    <image src="{{model.userData.avatar_url}}" class="profile-image"></image>
+    <h4>{{model.userData.name}}</h4>
 
-    <input class="form-control" ng-model="model.username" type="text"/>
+    {{model.userData.login}}
 
-
-    {{model.username}}
-    {{model.userData}}
-
-    <a class="btn btn-primay form-control" href="/index" role="button">Get Data</a>
+    Repositories: {{model.userData.repos_url}}
 
 </div>
 

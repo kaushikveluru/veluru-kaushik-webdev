@@ -60,7 +60,7 @@
                 controller: "NewWidgetController",
                 controllerAs:"model"
             })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wid", {
+            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
                 templateUrl: "views/widget/widget-edit.view.client.html",
                 controller: "EditWidgetController",
                 controllerAs:"model"
@@ -70,6 +70,11 @@
                 controller: "LoginController",
                 controllerAs:"model"
             })
+            .when("default", {
+            templateUrl: "views/user/login.view.client.html",
+            controller: "LoginController",
+            controllerAs:"model"
+        })
             .otherwise({
                 redirectTo: "views/user/login.view.client.html",
                 controller: "LoginController",

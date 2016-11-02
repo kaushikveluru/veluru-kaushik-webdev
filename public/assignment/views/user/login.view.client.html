@@ -1,5 +1,8 @@
 
+
 	<div class="container">
+		<div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
+
 		<h1>Login</h1>
 		<form>
 		<div class="form-group">
@@ -8,7 +11,7 @@
 
 		</div>
 			<div class="form-group">
-			<a href="#/user/:uid" role="button" class="btn btn-primary form-control">Login</a>
+			<a ng-click="model.login(model.user.username, model.user.password)" role="button" class="btn btn-primary form-control">Login</a>
 			<a href="#/register" role="button" class="btn btn-danger form-control">Register</a>
 			</div>
 		</form>

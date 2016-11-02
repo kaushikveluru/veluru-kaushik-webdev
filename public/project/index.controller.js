@@ -2,6 +2,7 @@
     angular
         .module("OpenSourceMoney")
         .controller("IndexController",IndexController)
+        .controller("ReposController",ReposController)
 
     function IndexController($http)
     {
@@ -18,7 +19,13 @@
                 vm.userData = data;
                 console.log(data)
             });
-        console.log("rest api called")
-        console.log("user data : "+vm.userData);
+
     }
+
+    function ReposController($http)
+    {
+
+    }
+
+
 })();
