@@ -5,21 +5,34 @@
         .controller("NewWebsiteController",NewWebsiteController)
         .controller("EditWebsiteController",EditWebsiteController)
 
-    function WebsiteListController(){
+    function WebsiteListController($routeParams,WebSiteService){
+
         var vm = this;
+        var uid = $routeParams.uid;
+        vm.goToWebsite = goToWebsite;
 
-        var websites=[
-            { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
-            { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
-            { "_id": "456", "name": "Gizmodo",     "developerId": "456", "description": "Lorem" },
-            { "_id": "567", "name": "Tic Tac Toe", "developerId": "123", "description": "Lorem" },
-            { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem" },
-            { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
-        ]
+        var websites = WebSiteService.getAllWebsites();
 
-        vm.websites = websites
+        var tempWebsites=[];
+        for(var u in websites)
+        {
+            if(websites[u].developerId === uid)
+            {
+                tempWebsites.push(websites[u]);
+            }
+        }
 
-        console.log("website list controller has been invoked")
+        vm.websites = tempWebsites;
+
+
+        function goToWebsite(website)
+        {
+            
+        }
+
+
+
+
     }
 
     function NewWebsiteController(){

@@ -3,9 +3,6 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<a href="#/user/:uid" class="navbar-text pull-left">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
 			<a href="#" class="navbar-brand">Websites</a>
 			<a class="navbar-text pull-right" href="#/user/:uid/website/new">
 				<span class="glyphicon glyphicon-plus"></span>
@@ -15,8 +12,8 @@
 
 	<ul class="list-group">
 		<li ng-repeat="website in model.websites" class="list-group-item">
-			<a href="#/user/:uid/website/:wid/page">{{website.name}}</a>
-			<a class="pull-right" href="#/user/:uid/website/{{website._id}}">
+			<a ng-click="model.goToWebsite(website)">{{website.name}}</a>
+			<a class="pull-right" href="#/user/:uid/website/:wid">
 				<span class="glyphicon glyphicon-cog"></span>
 			</a>
 		</li>
