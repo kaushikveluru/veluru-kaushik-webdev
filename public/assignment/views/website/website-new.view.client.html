@@ -39,59 +39,14 @@
 
 	<div class="hidden-xs">
 		<vr></vr>
-		<div class="col-sm-4">
-				<div class="row">
-					<p class="navbar-text pull-left">
-						<a href="#/user/:uid/website/:wid/page" class="navbar-link">Address Book App</a>
-					</p>
-					<p class="navbar-text pull-right">
-						<a href="#/user/:uid/website/:wid" class="navbar-link">
-							<span class="glyphicon glyphicon-cog"></span>
-
-						</a>
-					</p>
-
-				</div>
-
-				<div class="row">
-					<p class="navbar-text pull-left">
-						<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogger</a>
-					</p>
-					<p class="navbar-text pull-right">
-						<a href="#/user/:uid/website/:wid" class="navbar-link">
-							<span class="glyphicon glyphicon-cog"></span>
-
-						</a>
-					</p>
-
-				</div>
-
-				<div class="row">
-
-					<p class="navbar-text pull-left">
-						<a href="#/user/:uid/website/:wid/page" class="navbar-link">Blogglog App</a>
-					</p>
-					<p class="navbar-text pull-right">
-						<a href="#/user/:uid/website/:wid" class="navbar-link">
-							<span class="glyphicon glyphicon-cog"></span>
-
-						</a>
-					</p>
-
-				</div>
-
-				<div class="row">
-					<p class="navbar-text pull-left">
-						<a href="#/user/:uid/website/:wid/page" class="navbar-link">Script Testing App</a>
-					</p>
-					<p class="navbar-text pull-right">
-						<a href="#/user/:uid/website/:wid" class="navbar-link">
-							<span class="glyphicon glyphicon-cog"></span>
-
-						</a>
-					</p>
-
-				</div>
+			<ul class="list-group">
+				<li ng-repeat="website in model.websites" class="list-group-item">
+					<a href="#/user/{{model.uid}}/website/{{website._id}}/page">{{website.name}}</a>
+					<a class="pull-right" href="#/user/{{model.uid}}/website/{{website._id}}">
+						<span class="glyphicon glyphicon-cog"></span>
+					</a>
+				</li>
+			</ul>
 
 		</div>
 		<div class="col-sm-8">

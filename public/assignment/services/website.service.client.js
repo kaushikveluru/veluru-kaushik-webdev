@@ -52,9 +52,9 @@
         function findWebsiteById(websiteId){
             for(var w in websites)
             {
-                if(websites[u]._id === websiteId)
+                if(websites[w]._id === websiteId)
                 {
-                    return websites[u];
+                    return websites[w];
                 }
 
             }

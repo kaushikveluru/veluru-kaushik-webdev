@@ -12,8 +12,8 @@
 
 	<ul class="list-group">
 		<li ng-repeat="website in model.websites" class="list-group-item">
-			<a ng-click="model.goToWebsite(website)">{{website.name}}</a>
-			<a class="pull-right" href="#/user/:uid/website/:wid">
+			<a href="#/user/{{model.uid}}/website/{{website._id}}/page">{{website.name}}</a>
+			<a class="pull-right" href="#/user/{{model.uid}}/website/{{website._id}}">
 				<span class="glyphicon glyphicon-cog"></span>
 			</a>
 		</li>
