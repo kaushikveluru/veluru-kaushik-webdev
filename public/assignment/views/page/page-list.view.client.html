@@ -8,14 +8,14 @@
 			</a>
 			<a href="#" class="navbar-brand">Pages</a>
 			<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/new">
-				<span class="glyphicon glyphicon-ok"></span>
+				<span class="glyphicon glyphicon-plus"></span>
 			</a>
 		</div>
 	</nav>
 
 	<ul class="list-group">
 		<li ng-repeat="page in model.pages" class="list-group-item">
-			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}">{{page.name}}</a>
+			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}/widget">{{page.name}}</a>
 			<a class="pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}">
 				<span class="glyphicon glyphicon-cog"></span>
 			</a>

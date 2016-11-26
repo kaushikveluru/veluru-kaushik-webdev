@@ -3,7 +3,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<a href="#/user/:uid/website/:wid/page/:pid/widget" class="navbar-text pull-left">
+			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-text pull-left">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
 			<a href="#" class="navbar-brand">Choose Widget</a>
@@ -53,7 +53,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/:uid">
+			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
 				<span class="glyphicon glyphicon-user"></span>
 			</a>
 		</div>

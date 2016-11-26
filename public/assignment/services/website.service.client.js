@@ -32,6 +32,8 @@
 
         function createWebsite(userId,website){
             website.developerId = userId;
+            var index = websites.length+1;
+            website._id=index+"";
             websites.push(website);
 
         }

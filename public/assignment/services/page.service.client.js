@@ -24,7 +24,10 @@
 
         function createPage(websiteId, page){
             page.websiteId = websiteId;
+            var index = pages.length+1;
+            page._id=index+"";
             pages.push(page);
+
         }
 
         function findPageByWebsiteId(websiteId){

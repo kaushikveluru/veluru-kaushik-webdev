@@ -5,16 +5,27 @@
         .controller("NewWidgetController",NewWidgetController)
         .controller("EditWidgetController",EditWidgetController)
 
-    function WidgetListController(){
+    function WidgetListController($routeParams){
         var vm = this;
+        vm.uid = $routeParams.uid;
+        vm.wid = $routeParams.wid;
+        vm.pid = $routeParams.pid;
     }
 
-    function NewWidgetController(){
+    function NewWidgetController($routeParams){
         var vm = this;
+        vm.uid = $routeParams.uid;
+        vm.wid = $routeParams.wid;
+        vm.pid = $routeParams.pid;
+
     }
 
-    function EditWidgetController(){
+    function EditWidgetController($routeParams){
         var vm = this;
+        vm.uid = $routeParams.uid;
+        vm.wid = $routeParams.wid;
+        vm.pid = $routeParams.pid;
+
     }
 
 })();
