@@ -25,9 +25,12 @@
 
     }
 
-    function NewWebsiteController(){
+    function NewWebsiteController($routeParams, WebSiteService){
         console.log("in new website controller")
         var vm = this;
+        vm.uid = $routeParams.uid;
+
+
     }
 
     function EditWebsiteController($routeParams,WebSiteService,$location){

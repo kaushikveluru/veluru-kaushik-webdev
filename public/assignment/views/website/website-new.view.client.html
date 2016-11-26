@@ -67,13 +67,13 @@
 	<div class="visible-xs">
 		<form>
 		<div class="form-group">
-			<label for="name">Name</label>
-			<input id="name" type="text" class="form-control" ng-model="model.website.name" placeholder="Name"/>
+			<label for="name1">Name</label>
+			<input id="name1" type="text" class="form-control" ng-model="model.website.name" placeholder="Name"/>
 		</div>
 
 		<div class="form-group">
-			<label for="description">Description</label>
-			<textarea id="description" class="form-control" ng-model="model.website.description" placeholder="Description"></textarea>
+			<label for="description1">Description</label>
+			<textarea id="description1" class="form-control" ng-model="model.website.description" placeholder="Description"></textarea>
 		</div>
 		</form>
 	</div>
@@ -82,7 +82,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/:uid">
+			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
 				<span class="glyphicon glyphicon-user"></span>
 			</a>
 		</div>
