@@ -65,14 +65,13 @@
 
         var vm = this;
         var uid = $routeParams.uid
+        vm.uid = uid;
 
 
         var user = UserService.findUserById(uid);
 
         if(user != null)
-        {   console.log("user id : "+user._id)
-            console.log("username: "+user.username)
-            console.log("password: "+user.password)
+        {
             vm.user = user;
         }
         else

@@ -70,7 +70,7 @@
             WebSiteService.deleteWebsite(wid);
             websites = WebSiteService.getAllWebsites();
             console.log("after deletion : "+websites.length)
-            $location.url("#/user/"+vm.uid+"/website")
+            $location.url("/user/"+vm.uid+"/website")
         }
 
 
