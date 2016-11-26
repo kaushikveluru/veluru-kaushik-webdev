@@ -3,30 +3,31 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<div class="hidden-xs">  <!-- Not visible on extra small screens-->
+			<!--div class="hidden-xs">
 				<div class="col-sm-4 left-full">
 					<a href="#/user/{{model.uid}}" class="navbar-text">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</a>
-					<a href="#" class="navbar-brand">Websites</a>
+					<a href="#/user/{{model.uid}}/website" class="navbar-brand">Websites</a>
 					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/new">
 						<span class="glyphicon glyphicon-plus"></span>
 					</a>
 				</div>
 				<div class="col-sm-8 no-padding-right">
 					<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
-					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
+
+					<a ng-click="model.createNewWebsite()" class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
 						<span class="glyphicon glyphicon-ok"></span>
 					</a>
 				</div>
-			</div>
+			</div-->
 
 			<div class="visible-xs"> <!-- Visible only on extra small screens-->
-				<a href="#/user/{{model.uid}}" class="navbar-text pull-left">
+				<a href="#/user/{{model.uid}}/website" class="navbar-text pull-left">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
 				<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
-				<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
+				<a ng-click="model.createNewWebsite(model.website.name,model.website.description)" role="button" class="navbar-text pull-right">
 					<span class="glyphicon glyphicon-ok"></span>
 				</a>
 			</div>

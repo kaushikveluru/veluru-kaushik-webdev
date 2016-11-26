@@ -25,10 +25,19 @@
 
     }
 
-    function NewWebsiteController($routeParams, WebSiteService){
+    function NewWebsiteController($routeParams, WebSiteService,$location){
         console.log("in new website controller")
         var vm = this;
         vm.uid = $routeParams.uid;
+        vm.createNewWebsite = createNewWebsite;
+
+        function createNewWebsite(websiteName,websiteDescription){
+
+            var website =  { "_id": "999", "name": websiteName,    "developerId": vm.uid, "description": websiteDescription }
+            website = WebSiteService.createWebsite(vm.uid,website);
+            $location.url("/user/"+vm.uid+"/website")
+        }
+
 
 
     }

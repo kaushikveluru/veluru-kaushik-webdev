@@ -13,11 +13,14 @@
 		</div>
 	</nav>
 
-	<div ng-repeat="page in model.pages">
-
-		{{page.name}}
-
-	</div>
+	<ul class="list-group">
+		<li ng-repeat="page in model.pages" class="list-group-item">
+			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}">{{page.name}}</a>
+			<a class="pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{page._id}}">
+				<span class="glyphicon glyphicon-cog"></span>
+			</a>
+		</li>
+	</ul>
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">

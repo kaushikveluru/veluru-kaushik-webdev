@@ -2,11 +2,11 @@
 <div class="container">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<a href="#/user/:uid/website/:wid/page" class="navbar-text pull-left">
+			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-text pull-left">
 				<span class="glyphicon glyphicon-chevron-left"></span>
 			</a>
 			<a href="#" class="navbar-brand">New Page</a>
-			<a class="navbar-text pull-right" href="#/user/:uid/website/:wid/page">
+			<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page">
 				<span class="glyphicon glyphicon-ok"></span>
 			</a>
 		</div>
@@ -27,7 +27,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/:uid">
+			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
 				<span class="glyphicon glyphicon-user"></span>
 			</a>
 		</div>
