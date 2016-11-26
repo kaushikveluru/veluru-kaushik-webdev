@@ -12,6 +12,8 @@
         vm.wid = $routeParams.wid;
         vm.pages = PageService.findPageByWebsiteId(vm.wid);
 
+        console.log("pages found : "+vm.pages);
+
 
 
     }
