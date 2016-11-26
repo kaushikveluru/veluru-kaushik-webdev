@@ -35,6 +35,7 @@
 
     function EditWebsiteController($routeParams,WebSiteService,$location){
         console.log("in edit website controller")
+
         var vm = this;
         vm.wid = $routeParams.wid;
         vm.uid = $routeParams.uid;
@@ -60,7 +61,7 @@
             WebSiteService.deleteWebsite(wid);
             websites = WebSiteService.getAllWebsites();
             console.log("after deletion : "+websites.length)
-            $location.url("#/user/{{vm.uid}}/website")
+            $location.url("#/user/"+vm.uid+"/website")
         }
 
 

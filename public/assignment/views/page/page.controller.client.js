@@ -5,15 +5,21 @@
         .controller("NewPageController",NewPageController)
         .controller("EditPageController",EditPageController)
 
-    function PageListController(){
+    function PageListController($routeParams){
         var vm = this;
+        vm.uid = $routeParams.uid;
     }
 
-    function NewPageController(){
+    function NewPageController($routeParams){
+
         var vm = this;
+        vm.uid = $routeParams.uid;
+
     }
 
-    function EditPageController(){
+    function EditPageController($routeParams){
         var vm = this;
+        vm.uid= $routeParams.uid;
+
     }
 })();

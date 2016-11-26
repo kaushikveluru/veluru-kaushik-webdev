@@ -5,28 +5,28 @@
 		<div class=" container-fluid">
 			<div class="hidden-xs">  <!-- Not visible on extra small screens-->
 				<div class="col-sm-4 left-full">
-					<a href="#/user/:uid" class="navbar-text">
+					<a href="#/user/{{model.uid}}" class="navbar-text">
 						<span class="glyphicon glyphicon-chevron-left"></span>
 					</a>
 					<a href="#" class="navbar-brand">Websites</a>
-					<a class="navbar-text pull-right" href="#/user/:uid/website/new">
+					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/new">
 						<span class="glyphicon glyphicon-plus"></span>
 					</a>
 				</div>
 				<div class="col-sm-8 no-padding-right">
-					<a href="#" class="navbar-brand">New Website</a>
-					<a class="navbar-text pull-right" href="#/user/:uid/website">
+					<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
+					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
 						<span class="glyphicon glyphicon-ok"></span>
 					</a>
 				</div>
 			</div>
 
 			<div class="visible-xs"> <!-- Visible only on extra small screens-->
-				<a href="#/user/:uid" class="navbar-text pull-left">
+				<a href="#/user/{{model.uid}}" class="navbar-text pull-left">
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
-				<a href="#" class="navbar-brand">New Website</a>
-				<a class="navbar-text pull-right" href="#/user/:uid/website">
+				<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
+				<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
 					<span class="glyphicon glyphicon-ok"></span>
 				</a>
 			</div>
@@ -37,7 +37,7 @@
 
 
 
-	<div class="hidden-xs">
+	<!--div class="hidden-xs">
 		<vr></vr>
 			<ul class="list-group">
 				<li ng-repeat="website in model.websites" class="list-group-item">
@@ -62,7 +62,7 @@
 				</div>
 			</form>
 		</div>
-	</div>
+	</div-->
 
 	<div class="visible-xs">
 		<form>
