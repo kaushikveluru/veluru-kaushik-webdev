@@ -77,7 +77,7 @@
             {
                 if(websites[w]._id === websiteId)
                 {
-                    websites[w].remove();
+                    websites.splice(w,1);
                 }
             }
         }
