@@ -14,27 +14,28 @@
 	</nav>
 
 
-	<ul class="list-group">
-		<li ng-repeat="widget in model.widgets" class="list-group-item">
-			<div ng-switch="widget.widgetType">
-				<div ng-switch-when="HEADING">
-					<ng-include src="widget-heading.view.client.html"/>
+		<div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+				<div ng-switch="widget.size" ng-switch-when="HEADER">
+					<h1 ng-switch-when="1">{{widget.text}}</h1>
+					<h2 ng-switch-when="2">{{widget.text}}</h2>
+					<h3 ng-switch-when="3">{{widget.text}}</h3>
+					<h4 ng-switch-when="4">{{widget.text}}</h4>
+					<h5 ng-switch-when="5">{{widget.text}}</h5>
+					<h6 ng-switch-when="6">{{widget.text}}</h6>
+					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+						<span class="glyphicon glyphicon-cog"></span>
+					</a>
+
 				</div>
-				<div ng-switch-when="IMAGE">
-					<ng-include src="widget-image.view.client.html"/>
-				</div>
-				<div ng-switch-when="YOUTUBE">
-					<ng-include src="widget-youtube.view.client.html"/>
-				</div>
+			<div ng-switch-when="IMAGE">
+				image
 			</div>
 
-			<a class="pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-				<span class="glyphicon glyphicon-cog"></span>
-			</a>
-		</li>
-	</ul>
-
-
+			<div ng-switch-when="YOUTUBE">
+				<iframe width="{{widget.width}}" height="315" ng-src="{{model.checkSafeYouTubeURL(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<div ng-switch-when="HTML" ng-bind-html="model.checkSafeHTML(widget.text)"></div>
+		</div>
 
 
 	<nav class="navbar navbar-default navbar-fixed-bottom">

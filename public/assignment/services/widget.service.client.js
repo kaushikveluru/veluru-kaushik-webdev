@@ -16,6 +16,11 @@
                 "url": "https://youtu.be/AM2Ivdi9c4E" },
             { "_id": "789", "widgetType": "HTML", "pageId": "543", "text": "<p>Lorem ipsum</p>"}
         ]
+        var widgets1=[
+            { "_id": "123", "widgetType": "HEADER", "pageId": "543", "size": 2, "text": "GIZMODO"},
+            { "_id": "234", "widgetType": "HEADER", "pageId": "543", "size": 4, "text": "Lorem ipsum"}
+        ]
+
 
 
         var api={
