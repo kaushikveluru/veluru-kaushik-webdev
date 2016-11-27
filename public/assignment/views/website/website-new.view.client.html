@@ -3,7 +3,7 @@
 
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class=" container-fluid">
-			<!--div class="hidden-xs">
+			<div class="hidden-xs">
 				<div class="col-sm-4 left-full">
 					<a href="#/user/{{model.uid}}" class="navbar-text">
 						<span class="glyphicon glyphicon-chevron-left"></span>
@@ -16,11 +16,11 @@
 				<div class="col-sm-8 no-padding-right">
 					<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
 
-					<a ng-click="model.createNewWebsite()" class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
+					<a ng-click="model.createNewWebsite(model.website.name,model.website.description)" class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
 						<span class="glyphicon glyphicon-ok"></span>
 					</a>
 				</div>
-			</div-->
+			</div>
 
 			<div class="visible-xs"> <!-- Visible only on extra small screens-->
 				<a href="#/user/{{model.uid}}/website" class="navbar-text pull-left">
@@ -38,8 +38,9 @@
 
 
 
-	<!--div class="hidden-xs">
+	<div class="hidden-xs">
 		<vr></vr>
+		<div class="col-sm-4 left-full">
 			<ul class="list-group">
 				<li ng-repeat="website in model.websites" class="list-group-item">
 					<a href="#/user/{{model.uid}}/website/{{website._id}}/page">{{website.name}}</a>
@@ -48,8 +49,8 @@
 					</a>
 				</li>
 			</ul>
-
 		</div>
+
 		<div class="col-sm-8">
 			<form>
 				<div class="form-group">
@@ -63,7 +64,7 @@
 				</div>
 			</form>
 		</div>
-	</div-->
+	</div>
 
 	<div class="visible-xs">
 		<form>

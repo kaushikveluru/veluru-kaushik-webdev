@@ -39,14 +39,16 @@
         }
 
         function findWebsitesByUser(userId){
-            for(var w in websites)
+            var websitesResult=[];
+
+            for(var u in websites)
             {
                 if(websites[u].developerId === userId)
                 {
-                    return websites[u];
+                    websitesResult.push(websites[u]);
                 }
             }
-            return null;
+            return websitesResult;
         }
 
 

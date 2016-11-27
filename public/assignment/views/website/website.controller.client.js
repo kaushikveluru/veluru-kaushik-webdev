@@ -30,6 +30,7 @@
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.createNewWebsite = createNewWebsite;
+        vm.websites = WebSiteService.findWebsitesByUser(vm.uid);
 
         function createNewWebsite(websiteName,websiteDescription){
 
@@ -66,10 +67,7 @@
         function deleteWebsite(wid)
         {
             var websites = WebSiteService.getAllWebsites();
-            console.log("before deltion : "+websites.length);
             WebSiteService.deleteWebsite(wid);
-            websites = WebSiteService.getAllWebsites();
-            console.log("after deletion : "+websites.length)
             $location.url("/user/"+vm.uid+"/website")
         }
 
