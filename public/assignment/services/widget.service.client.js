@@ -5,7 +5,7 @@
 
     function WidgetService(){
 
-        var widgets=[
+        var widgets1=[
             { "_id": "123", "widgetType": "HEADER", "pageId": "543", "size": 2, "text": "GIZMODO"},
             { "_id": "234", "widgetType": "HEADER", "pageId": "543", "size": 4, "text": "Lorem ipsum"},
             { "_id": "345", "widgetType": "IMAGE", "pageId": "543", "width": "100%",
@@ -16,7 +16,7 @@
                 "url": "https://youtu.be/AM2Ivdi9c4E" },
             { "_id": "789", "widgetType": "HTML", "pageId": "543", "text": "<p>Lorem ipsum</p>"}
         ]
-        var widgets1=[
+        var widgets=[
             { "_id": "123", "widgetType": "HEADER", "pageId": "543", "size": 2, "text": "GIZMODO"},
             { "_id": "234", "widgetType": "HEADER", "pageId": "543", "size": 4, "text": "Lorem ipsum"}
         ]
@@ -55,7 +55,7 @@
             {
                 if(widgets[w]._id === widgetId)
                 {
-                    return widget;
+                    return widgets[w];
                 }
             }
             return null;

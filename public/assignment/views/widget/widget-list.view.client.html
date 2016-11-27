@@ -14,7 +14,7 @@
 	</nav>
 
 
-		<div ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
+		<div class="container-fluid" ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
 				<div ng-switch="widget.size" ng-switch-when="HEADER">
 					<h1 ng-switch-when="1">{{widget.text}}</h1>
 					<h2 ng-switch-when="2">{{widget.text}}</h2>

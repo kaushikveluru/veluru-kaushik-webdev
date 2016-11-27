@@ -30,6 +30,7 @@
     }
 
     function NewWidgetController($routeParams){
+        console.log("in new widget controller")
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
@@ -37,11 +38,21 @@
 
     }
 
-    function EditWidgetController($routeParams){
+    function EditWidgetController($routeParams,WidgetService){
+
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
+        vm.wgid = $routeParams.wgid;
+        vm.widgetType = widgetType;
+
+        function widgetType(){
+            var widget = WidgetService.findWidgetById(vm.wgid);
+            console.log("widget type : "+widget.widgetType)
+            return widget.widgetType;
+        }
+
 
     }
 
