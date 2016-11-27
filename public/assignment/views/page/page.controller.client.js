@@ -11,11 +11,6 @@
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pages = PageService.findPageByWebsiteId(vm.wid);
-
-        for(var u in vm.pages){
-            console.log("page name : "+vm.pages[u].name)
-        }
-
     }
 
     function NewPageController($routeParams,PageService,$location){
@@ -27,16 +22,10 @@
         vm.createNewPage = createNewPage;
 
         function createNewPage(pageName,pageTitle){
-            console.log("name from form : "+pageName)
-            console.log("title from form: "+pageTitle)
 
             var page =  { "_id": "999", "name": pageName, "websiteId": vm.wid, "description": pageTitle }
-            console.log("new page name :"+page._id)
             PageService.createPage(vm.wid,page)
             $location.url("/user/"+vm.uid+"/website/"+vm.wid+"/page")
-
-
-
         }
 
     }
