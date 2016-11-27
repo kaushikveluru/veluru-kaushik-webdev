@@ -10,36 +10,33 @@
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
-        var pages = PageService.findPageByWebsiteId(vm.wid);
+        vm.pages = PageService.findPageByWebsiteId(vm.wid);
 
-        var tempPages=[];
-        for(var u in pages)
-        {
-            if(pages[u].websiteId === vm.wid)
-            {
-                tempPages.push(pages[u]);
-            }
+        for(var u in vm.pages){
+            console.log("page name : "+vm.pages[u].name)
         }
-        vm.pages = tempPages;
-
-
-
 
     }
 
     function NewPageController($routeParams,PageService,$location){
 
+        console.log("in new page controller ")
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.createNewPage = createNewPage;
 
         function createNewPage(pageName,pageTitle){
+            console.log("name from form : "+pageName)
+            console.log("title from form: "+pageTitle)
 
             var page =  { "_id": "999", "name": pageName, "websiteId": vm.wid, "description": pageTitle }
+            console.log("new page name :"+page._id)
             PageService.createPage(vm.wid,page)
             $location.url("/user/"+vm.uid+"/website/"+vm.wid+"/page")
-            return page;
+
+
+
         }
 
     }
@@ -58,9 +55,8 @@
         function savePage(name,title){
             vm.page.name = name;
             vm.page.description =title;
-            console.log("name : "+name)
-            console.log("title : "+title)
-            PageService.updatePage(vm.pid,vm.page);
+            vm.page = PageService.updatePage(vm.pid,vm.page);
+
             var url = "/user/"+vm.uid+"/website/"+vm.wid+"/page"
             $location.url(url)
         }

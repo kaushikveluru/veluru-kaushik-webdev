@@ -26,7 +26,6 @@
             page.websiteId = websiteId;
             var index = pages.length+1;
             page._id=index+"";
-            console.log("new page id: "+page._id)
             pages.push(page);
 
         }
@@ -65,10 +64,15 @@
             {
                 if(pages[p]._id === pageId)
                 {
-                     pages[p] = page;
+
+                    console.log("page udpated ")
+                    console.log("name updated from : "+pages[p].name +" to : "+page.name)
+                    pages[p] = page;
+                    return pages[p];
                 }
 
             }
+
 
         }
 
