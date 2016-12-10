@@ -38,6 +38,6 @@ module.exports = function(app){
     }
 
     function deleteUser(req,res){
-        
+
     }
 }
