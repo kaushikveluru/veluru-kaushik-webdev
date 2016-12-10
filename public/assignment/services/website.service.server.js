@@ -16,18 +16,48 @@ module.exports=function(app){
     app.delete("/api/website/:websiteId", deleteWebsite);
 
     function createWebsite(req,res){
-
+        var website = req.body;
+        website._id = (new Date()).getTime();
+        websites.push(website);
+        res.send(websites);
     }
     function findAllWebsitesForUser(req,res){
-
+        var uid = parseInt(req.params.userId);
+        var result = [];
+        for(var w in websites) {
+            if(websites[w].uid === uid) {
+                result.push(websites[w]);
+            }
+        }
+        res.json(result);
     }
     function findWebsiteById(req,res){
-
+        var wid = parseInt(req.params.websiteId);
+        var wb = websites.filter(function(website){
+            return website._id === wid;
+        });
+        if(wb.length == 1)
+            res.send(wb[0]);
+        else
+            res.send('0');
     }
     function updateWebsite(req,res){
-
+        var website = req.body;
+        var wid = parseInt(req.params.websiteId);
+        for(var w in websites) {
+            if(websites[w]._id === wid) {
+                websites[w] = website;
+            }
+        }
+        res.send(200);
     }
     function deleteWebsite(req,res){
-
+        var wid = parseInt(req.params.websiteId);
+        for(var w in websites) {
+            if(websites[w]._id === wid) {
+                websites.splice(w, 1);
+            }
+        }
+        res.send('0');
     }
 }

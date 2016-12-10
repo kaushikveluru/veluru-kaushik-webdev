@@ -13,22 +13,52 @@ module.exports = function(app){
     app.delete("/api/page/:pageId", deletePage);
 
     function createPage(req,res){
-
+        var page = req.body;
+        page._id = (new Date()).getTime();
+        pages.push(page);
+        res.send(pages);
     }
     function findAllPagesForWebsite(req,res){
-
+        var wid = parseInt(req.params.websiteId);
+        var result = [];
+        for(var p in pages) {
+            if(pages[p].websiteId == wid) {
+                result.push(pages[p]);
+            }
+        }
+        res.json(result);
     }
 
     function findPageById(req,res){
-
+        var pid = parseInt(req.params.pageId);
+        var pg = pages.filter(function(page){
+            return page._id === pid;
+        });
+        if(pg.length == 1)
+            res.send(pg[0]);
+        else
+            res.send('0');
     }
 
     function updatePage(req,res){
-
+        var page = req.body;
+        var pid = parseInt(req.params.pageId);
+        for(var p in pages) {
+            if(pages[p]._id === pid) {
+                pages[p] = page;
+            }
+        }
+        res.send(200);
     }
 
     function deletePage(req,res){
-
+        var pageId = parseInt(req.params.pageId);
+        for(var p in pages) {
+            if(pages[p]._id === pageId) {
+                pages.splice(p, 1);
+            }
+        }
+        res.send('0');
     }
 
 }
