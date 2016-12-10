@@ -10,7 +10,7 @@ module.exports = function(app){
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789", "widgetType": "HTML", "pageId": "543", "text": "<p>Lorem ipsum</p>"}
     ]
-    
+
     app.post("/api/widget/:pageId/widget", createWidget);
     app.get("/api/widget/:pageId/widget", findAllWidgetsForPage);
     app.get("/api/widget/:widgetId", findWidgetById);
