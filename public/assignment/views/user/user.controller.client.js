@@ -19,25 +19,22 @@
         var vm = this;
         vm.login = login;
 
-
-        function login(username,password)
-        {
-
-            user = UserService.findUserByCredentials(username,password);
-
-            if(user != null)
-            {
-                if(user.username === username && user.password === password)
-                {
-                    uid = user._id;
-                    $location.url("/user/"+uid);
-                }
-            }
-            else
-            {
-                vm.error="No such user exists";
-            }
-
+        function login(user){
+            console.log("hey its here");
+            var promise = UserService.findUserByCredentials(user.username,user.password);
+            promise
+                .success(function(user){
+                    if(user==null){
+                        vm.error="No such user";
+                    }
+                    else{
+                        vm.user = user;
+                        $location.url("/user"+user._id);
+                    }
+                })
+                .error(function(err){
+                    console.log(err);
+                })
         }
     }
 

@@ -9,12 +9,24 @@ module.exports = function(app){
     ];
 
     app.post('/api/user',createUser);
-    app.get('/api/user?username=username',findUserByUsername);
-    app.get('/api/user?username=username&password=password',findUserByCredentials);
+    app.get('/api/user',findUser);
     app.get('/api/user/:uid',findUserById);
     app.put('/api/user/:uid',updateUser);
     app.delete('/api/user/:uid',deleteUser);
 
+
+    function findUser(req,res){
+        console.log()
+        var query = req.query;
+        var params = req.params;
+        if(query.username && query.password){
+            findUserByCredentials(req,res)
+        }
+        else if(query.username){
+            findUserByUsername(req,res);
+        }
+
+    }
 
 
     function createUser(req,res){
