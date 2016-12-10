@@ -18,26 +18,66 @@ module.exports = function(app){
 
 
     function createUser(req,res){
-
+        var user = req.body;
+        user._id = (new Date()).getTime();
+        users.push(user);
+        res.send(user);
     }
 
     function findUserByUsername(req,res){
-
+        var username = req.query.username;
+        for(var u in users){
+            if(users[u].username == username){
+                res.send(users[u]);
+                return;
+            }
+        }
+        res.send('0');
     }
 
     function findUserByCredentials(req,res){
-
+        var username = req.query.username;
+        var password = req.query.password;
+        for(var u in users){
+            if(users[u].username == username && users[u].password == password){
+                res.send(users[u]);
+                return;
+            }
+        }
+        res.send('0');
     }
 
     function findUserById(req,res){
-
+        var userId = parseInt(req.params.uid);
+        for(var u in users){
+            if(users[u]._id === userId){
+                res.send(users[u]);
+                return;
+            }
+        }
+        res.send('0');
     }
 
     function updateUser(req,res){
-
+        var user = req.body;
+        var userId = parseInt(req.params.uid);
+        for(var u in users){
+            if(users[u]._id == userId){
+                users[u] = user;
+                return;
+            }
+        }
+        res.send(200);
     }
 
     function deleteUser(req,res){
-
+        var userId = parseInt(req.params.uid);
+        for(var u in users){
+            if(users[u]._id === userId){
+                users.splice(u,1);
+                return;
+            }
+        }
+        res.send(200);
     }
 }
