@@ -17,7 +17,7 @@ module.exports=function(app){
 
     function createWebsite(req,res){
         var website = req.body;
-        website._id = (new Date()).getTime();
+        website._id = websites.length+1;
         websites.push(website);
         res.send(websites);
     }
@@ -28,8 +28,6 @@ module.exports=function(app){
 
             if(websites[w].developerId == uid) {
                 result.push(websites[w]);
-            }
-            else{
             }
         }
         res.json(result);
@@ -46,7 +44,7 @@ module.exports=function(app){
     }
     function updateWebsite(req,res){
         var website = req.body;
-        var wid = parseInt(req.params.websiteId);
+        var wid = req.params.websiteId;
         for(var w in websites) {
             if(websites[w]._id === wid) {
                 websites[w] = website;
@@ -55,7 +53,7 @@ module.exports=function(app){
         res.send(200);
     }
     function deleteWebsite(req,res){
-        var wid = parseInt(req.params.websiteId);
+        var wid = req.params.websiteId;
         for(var w in websites) {
             if(websites[w]._id === wid) {
                 websites.splice(w, 1);

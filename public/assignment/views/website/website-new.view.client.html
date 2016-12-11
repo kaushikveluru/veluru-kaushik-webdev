@@ -16,7 +16,7 @@
 				<div class="col-sm-8 no-padding-right">
 					<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
 
-					<a ng-click="model.createNewWebsite(model.website.name,model.website.description)" class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
+					<a ng-click="model.createNewWebsite(model.website)" class="navbar-text pull-right" href="#/user/{{model.uid}}/website">
 						<span class="glyphicon glyphicon-ok"></span>
 					</a>
 				</div>
@@ -27,7 +27,7 @@
 					<span class="glyphicon glyphicon-chevron-left"></span>
 				</a>
 				<a href="#/user/{{model.uid}}/website/new" class="navbar-brand">New Website</a>
-				<a ng-click="model.createNewWebsite(model.website.name,model.website.description)" role="button" class="navbar-text pull-right">
+				<a ng-click="model.createNewWebsite(model.website)" role="button" class="navbar-text pull-right">
 					<span class="glyphicon glyphicon-ok"></span>
 				</a>
 			</div>

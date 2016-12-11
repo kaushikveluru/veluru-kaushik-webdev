@@ -35,7 +35,7 @@ module.exports = function(app){
     }
 
     function findWidgetById(req,res){
-        var wgid = parseInt(req.params.widgetId);
+        var wgid = req.params.widgetId;
         var wg = widgets.filter(function(widget){
             return widget._id === wgid;
         });
@@ -47,7 +47,7 @@ module.exports = function(app){
 
     function updateWidget(req,res){
         var widget = req.body;
-        var wgid = parseInt(req.params.widgetId);
+        var wgid = req.params.widgetId;
         for(var wg in widgets) {
             if(widgets[wg]._id === wgid) {
                 widgets[wg] = widget;
@@ -57,7 +57,7 @@ module.exports = function(app){
     }
 
     function deleteWidget(req,res){
-        var wgid = parseInt(req.params.widgetId);
+        var wgid = req.params.widgetId;
         for(var wg in widgets) {
             if(widgets[wg]._id === wgid) {
                 widgets.splice(wg, 1);

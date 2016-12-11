@@ -59,7 +59,6 @@ module.exports = function(app){
         for(var u in users){
             if(users[u].username == username && users[u].password == password){
                 res.send(users[u]);
-                console.log("user found")
                 return;
             }
         }
@@ -79,7 +78,7 @@ module.exports = function(app){
 
     function updateUser(req,res){
         var user = req.body;
-        var userId = parseInt(req.params.uid);
+        var userId = req.params.uid;
         for(var u in users){
             if(users[u]._id == userId){
                 users[u] = user;

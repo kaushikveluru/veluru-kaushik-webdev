@@ -13,8 +13,7 @@
         function init(){
             var websites = WebSiteService.findWebsitesByUser(vm.uid);
             websites
-                .success(function(websites){vm.websites = websites;
-                console.log("websites found: "+websites.length)})
+                .success(function(websites){vm.websites = websites})
                 .error(function(err){vm.error = error})
         }
         init();
@@ -26,13 +25,26 @@
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.createNewWebsite = createNewWebsite;
-        vm.websites = WebSiteService.findWebsitesByUser(vm.uid);
 
-        function createNewWebsite(websiteName,websiteDescription){
+        function init(){
+            var websites = WebSiteService.findWebsitesByUser(vm.uid);
+            websites
+                .success(function(websitesList){vm.websites = websitesList})
+                .error(function(err){console.log(err)})
+        }
+        init()
 
-            var website =  { "_id": "999", "name": websiteName,    "developerId": vm.uid, "description": websiteDescription }
-            website = WebSiteService.createWebsite(vm.uid,website);
-            $location.url("/user/"+vm.uid+"/website")
+
+        function createNewWebsite(website){
+            console.log("before addition : "+vm.websites.length)
+            WebSiteService.createWebsite(vm.uid,website)
+                .success(function(websiteList){
+                    vm.websites = websiteList
+                    console.log("after addition : "+vm.websites.length)
+                    $location.url("/user/"+vm.uid+"/website")
+                })
+                .error(function(err){console.log(err)})
+
         }
 
 

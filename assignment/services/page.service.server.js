@@ -19,7 +19,7 @@ module.exports = function(app){
         res.send(pages);
     }
     function findAllPagesForWebsite(req,res){
-        var wid = parseInt(req.params.websiteId);
+        var wid = req.params.websiteId;
         var result = [];
         for(var p in pages) {
             if(pages[p].websiteId == wid) {
@@ -30,7 +30,7 @@ module.exports = function(app){
     }
 
     function findPageById(req,res){
-        var pid = parseInt(req.params.pageId);
+        var pid = req.params.pageId;
         var pg = pages.filter(function(page){
             return page._id === pid;
         });
@@ -42,7 +42,7 @@ module.exports = function(app){
 
     function updatePage(req,res){
         var page = req.body;
-        var pid = parseInt(req.params.pageId);
+        var pid = req.params.pageId;
         for(var p in pages) {
             if(pages[p]._id === pid) {
                 pages[p] = page;
@@ -52,7 +52,7 @@ module.exports = function(app){
     }
 
     function deletePage(req,res){
-        var pageId = parseInt(req.params.pageId);
+        var pageId = req.params.pageId;
         for(var p in pages) {
             if(pages[p]._id === pageId) {
                 pages.splice(p, 1);
