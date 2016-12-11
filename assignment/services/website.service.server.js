@@ -22,17 +22,20 @@ module.exports=function(app){
         res.send(websites);
     }
     function findAllWebsitesForUser(req,res){
-        var uid = parseInt(req.params.userId);
+        var uid = req.params.userId;
         var result = [];
         for(var w in websites) {
-            if(websites[w].uid === uid) {
+
+            if(websites[w].developerId == uid) {
                 result.push(websites[w]);
+            }
+            else{
             }
         }
         res.json(result);
     }
     function findWebsiteById(req,res){
-        var wid = parseInt(req.params.websiteId);
+        var wid = req.params.websiteId;
         var wb = websites.filter(function(website){
             return website._id === wid;
         });

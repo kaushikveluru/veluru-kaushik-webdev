@@ -43,8 +43,6 @@
                 var createUser = UserService.createUser(user);
                 createUser
                     .success(function(userNew){
-                        console.log("new user details");
-                        console.log(userNew._id+" "+userNew.username+" "+userNew.password);
                         vm.user = userNew;
                         $location.url("/user/"+userNew._id)
                     })
@@ -61,10 +59,16 @@
         var uid = $routeParams.uid
         vm.uid = uid;
 
-
-        UserService.findUserById(uid)
-            .success(function(user){vm.user = user})
-            .error(function(user){vm.error = "profile for user id: "+uid+"doesn't exist"})
+        function init()
+        {
+            var user = UserService.findUserById(uid)
+                user
+                .success(function(user){
+                    vm.user = user
+                })
+                .error(function(user){vm.error = "profile for user id: "+uid+"doesn't exist"})
+        }
+        init();
 
     }
 })();

@@ -9,17 +9,15 @@
 
         var vm = this;
         vm.uid = $routeParams.uid;
-        var websites = WebSiteService.getAllWebsites();
 
-        var tempWebsites=[];
-        for(var u in websites)
-        {
-            if(websites[u].developerId === vm.uid)
-            {
-                tempWebsites.push(websites[u]);
-            }
+        function init(){
+            var websites = WebSiteService.findWebsitesByUser(vm.uid);
+            websites
+                .success(function(websites){vm.websites = websites;
+                console.log("websites found: "+websites.length)})
+                .error(function(err){vm.error = error})
         }
-        vm.websites = tempWebsites;
+        init();
 
     }
 

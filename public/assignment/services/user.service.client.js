@@ -21,6 +21,7 @@
         }
 
         function findUserById(userId){
+            console.log("finding user for user id at client side: "+userId)
             var url = "/api/user/"+userId;
             return $http.get(url);
         }

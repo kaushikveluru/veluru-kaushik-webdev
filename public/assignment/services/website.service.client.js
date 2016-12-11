@@ -3,7 +3,7 @@
         .module("WebAppMaker")
         .factory("WebSiteService",WebSiteService);
 
-    function WebSiteService(UserService){
+    function WebSiteService($http){
 
         var api={
             "createWebsite":createWebsite,
