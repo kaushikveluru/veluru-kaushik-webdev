@@ -11,11 +11,71 @@ module.exports = function(app){
         { "_id": "789", "widgetType": "HTML", "pageId": "543", "text": "<p>Lorem ipsum</p>"}
     ]
 
+    var mime = require('mime');
+    var multer = require('multer');
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname+'/../../public/uploads')
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.fieldname + '-' + Date.now() + '.' + mime.extension(file.mimetype));
+        }
+    });
+    var upload = multer({ storage: storage });
+
+
     app.post("/api/widget/:pageId/widget", createWidget);
     app.get("/api/widget/:pageId/widget", findAllWidgetsForPage);
     app.get("/api/widget/:widgetId", findWidgetById);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
+
+    app.post ("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/page/:pageId/widget", sortWidgets);
+
+
+    function sortWidgets(req, res){
+        var pid = req.params.pageId;
+        var result = [];
+        for(var wg in widgets) {
+            if(widgets[wg].pageId === pid) {
+                result.push(widgets[wg]);
+            }
+        }
+        var initial = req.query.initial;
+        var final = req.query.final;
+        var temp = result[initial];
+        result.splice(initial, 1);
+        result.splice(final, 0, temp);
+        res.send(result);
+    }
+
+
+    function uploadImage(req, res) {
+        var widgetId      = req.body.widgetId;
+        var width         = req.body.width;
+        var userId        = req.body.userId;
+        var websiteId     = req.body.websiteId;
+        var pageId        = req.body.pageId;
+        var myFile        = req.file;
+
+        var originalname  = myFile.originalname; // file name on user's computer
+        var filename      = myFile.filename;     // new file name in upload folder
+        var path          = myFile.path;         // full path of uploaded file
+        var destination   = myFile.destination;  // folder where file is saved to
+        var size          = myFile.size;
+        var mimetype      = myFile.mimetype;
+        var widget = {};
+        widget._id = parseInt(widgetId);
+        widget.widgetType = "image";
+        widget.pageId = parseInt(pageId);
+        widget.name = req.body.name;
+        widget.text = req.body.text;
+        widget.width = width+'%';
+        widget.url =  "/uploads/" + filename;
+        widgets.push(widget);
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+    }
 
     function createWidget(req,res){
         var widget = req.body;
