@@ -57,26 +57,49 @@
         var vm = this;
         vm.wid = $routeParams.wid;
         vm.uid = $routeParams.uid;
-        vm.website = WebSiteService.findWebsiteById(vm.wid);
         vm.deleteWebsite = deleteWebsite;
+        vm.updateWebsite = updateWebsite;
 
-        var websites = WebSiteService.getAllWebsites();
-
-        var tempWebsites=[];
-        for(var u in websites)
-        {
-            if(websites[u].developerId === vm.uid)
-            {
-                tempWebsites.push(websites[u]);
-            }
+        function init(){
+            WebSiteService.findWebsitesByUser(vm.uid)
+                .success(function(websites){
+                    vm.websites = websites;
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+            WebSiteService.findWebsiteById(vm.wid)
+                .success(function(website){
+                    vm.website = website})
+                .error(function(err){
+                    console.log(err);
+                });
         }
-        vm.websites = tempWebsites;
+
+        init();
+
+        function updateWebsite(website) {
+            WebSiteService.updateWebsite(website)
+                .success(function(website){
+                    init();
+                    $location.url("/user/" + vm.uid + "/website");
+                })
+                .error(function(err){
+                    console.log("Error updating website: "+err);
+                });
+        }
+
+
+
 
         function deleteWebsite(wid)
         {
-            var websites = WebSiteService.getAllWebsites();
-            WebSiteService.deleteWebsite(wid);
-            $location.url("/user/"+vm.uid+"/website")
+            WebSiteService.deleteWebsite(wid)
+                .success(function(website){
+                    init();
+                    $location.url("/user/"+vm.uid+"/website")
+                })
+                .error(function(err){console.log("error deleting the page: "+err)})
         }
 
 

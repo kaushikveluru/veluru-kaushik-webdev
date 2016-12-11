@@ -42,7 +42,7 @@
             return $http.get(url);
         }
 
-        function updateWebsite(websiteId,website){
+        function updateWebsite(website){
 
             var url = "/api/website/"+website._id;
             return $http.put(url, website);

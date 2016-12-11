@@ -17,7 +17,9 @@ module.exports=function(app){
 
     function createWebsite(req,res){
         var website = req.body;
+        var userId = req.params.userId;
         website._id = websites.length+1;
+        website.developerId = userId;
         websites.push(website);
         res.send(websites);
     }
@@ -34,17 +36,28 @@ module.exports=function(app){
     }
     function findWebsiteById(req,res){
         var wid = req.params.websiteId;
-        var wb = websites.filter(function(website){
-            return website._id === wid;
-        });
-        if(wb.length == 1)
-            res.send(wb[0]);
-        else
+        var websitesList=[];
+        for(var w in websites){
+            if(websites[w]._id == wid){
+                websitesList.push(websites[w])
+            }
+        }
+        if(websitesList.length == 1){
+            console.log("website found on server: "+websitesList[0].name)
+            res.send(websitesList[0]);
+
+        }
+        else{
+            console.log("no website found with wid: "+wid)
             res.send('0');
+        }
+
     }
     function updateWebsite(req,res){
+
         var website = req.body;
         var wid = req.params.websiteId;
+        console.log("updating the website:"+wid)
         for(var w in websites) {
             if(websites[w]._id === wid) {
                 websites[w] = website;
