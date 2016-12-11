@@ -22,6 +22,7 @@ module.exports = function(app){
         var query = req.query;
         var params = req.params;
         if(query.username && query.password){
+            console.log("finding user by credentials")
             findUserByCredentials(req,res)
         }
         else if(query.username){
@@ -32,9 +33,11 @@ module.exports = function(app){
 
 
     function createUser(req,res){
+        console.log("create user in service side")
         var user = req.body;
-        user._id = (new Date()).getTime();
+        user._id = users.count+1;
         users.push(user);
+        console.log("user created: "+user);
         res.send(user);
     }
 
@@ -55,6 +58,7 @@ module.exports = function(app){
         for(var u in users){
             if(users[u].username == username && users[u].password == password){
                 res.send(users[u]);
+                console.log("user found")
                 return;
             }
         }

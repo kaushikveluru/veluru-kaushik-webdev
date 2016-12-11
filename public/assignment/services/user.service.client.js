@@ -16,7 +16,7 @@
         return api;
 
         function createUser(user){
-
+            console.log("http post to create user")
             return $http.post("/api/user",user);
         }
 
@@ -27,7 +27,9 @@
 
 
         function findUserByCredentials(username,password){
+
             var url = "/api/user?username="+username+"&password="+password;
+            console.log("url crated: "+url)
             return $http.get(url);
         }
 

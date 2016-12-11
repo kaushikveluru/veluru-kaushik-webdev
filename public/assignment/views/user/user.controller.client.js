@@ -6,19 +6,12 @@
         .controller("ProfileController",ProfileController)
 
 
-    var users=[
-        {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-    ];
-
-
     function LoginController($location,UserService){
         var vm = this;
         vm.login = login;
 
         function login(user){
+            console.log("calling service")
             var promise = UserService.findUserByCredentials(user.username,user.password);
             promise
                 .success(function(user){
@@ -27,7 +20,9 @@
                     }
                     else{
                         vm.user = user;
-                        $location.url("/user"+user._id);
+                        console.log("navigating to user page")
+                        console.log("user id : "+user._id)
+                        $location.url("/user/"+user._id);
                     }
                 })
                 .error(function(err){
@@ -40,18 +35,24 @@
         var vm = this;
         vm.register = register;
 
-        function register(username,password,verifypassword)
+        function register(user)
         {
             console.log("in register method")
-            if(password != verifypassword)
+            if(user.password != user.verifypassword)
             {
                 vm.error = "passwords do not match"
             }
             else
             {
-                var user = {_id: "999", username: username, password: password, firstName: username,   lastName: username, email: username+"@gmail.com" }
-                user = UserService.createUser(user);
-                $location.url("/user/"+user._id)
+                console.log("creating user in register controller")
+                var createUser = UserService.createUser(user);
+                createUser
+                    .success(function(userNew){
+                        $location.url("/user/"+userNew._id)
+                    })
+                    .error(function(err){
+                        console.log(err);
+                    })
             }
         }
     }
