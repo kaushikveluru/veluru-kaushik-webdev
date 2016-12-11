@@ -66,6 +66,11 @@
                 controller: "EditWidgetController",
                 controllerAs:"model"
             })
+            .when("/user/:uid/website/:wid/page/:pid/widget/new/:type", {
+                templateUrl: "views/widget/widget-new.view.client.html",
+                controller: "NewWidgetController",
+                controllerAs:"model"
+            })
             .when("/", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",

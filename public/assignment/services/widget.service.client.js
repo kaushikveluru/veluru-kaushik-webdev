@@ -35,7 +35,7 @@
         }
 
         function updateWidget(widgetId,widget){
-            var url = "/api/widget/"+widget._id;
+            var url = "/api/widget/"+widgetId;
             return $http.put(url, widget);
 
         }

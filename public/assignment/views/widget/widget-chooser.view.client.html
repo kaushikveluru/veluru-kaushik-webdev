@@ -1,16 +1,15 @@
-
-<div class="container">
-
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class=" container-fluid">
-			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-text pull-left">
-				<span class="glyphicon glyphicon-chevron-left white"></span>
-			</a>
-			<a href="#" class="navbar-brand">Choose Widget</a>
-		</div>
-	</nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<a class="navbar-text pull-left" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">
+			<span class="glyphicon glyphicon-chevron-left white"></span>
+		</a>
+		<a class="navbar-brand">Choose Widget</a>
+	</div>
+</nav>
 
 
+<div class="container-fluid">
+	<br>
 	<div class="list-item">
 		<a ng-click="model.goToWidget('heading')">Header</a>
 	</div>
@@ -20,14 +19,12 @@
 	<div class="list-item">
 		<a ng-click="model.goToWidget('youtube')">Youtube</a>
 	</div>
-
-
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
-				<span class="glyphicon glyphicon-user white"></span>
-			</a>
-		</div>
-	</nav>
-
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container-fluid">
+		<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
+			<span class="glyphicon glyphicon-user white"></span>
+		</a>
+	</div>
+</nav>

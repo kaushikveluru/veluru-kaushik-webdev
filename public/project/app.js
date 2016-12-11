@@ -1,6 +1,6 @@
 (function(){
 
     angular
-        .module("OpenSourceMoney",['ngRoute'])
+        .module("smartpool",['ngRoute'])
 
 })();

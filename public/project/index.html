@@ -1,19 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="OpenSourceMoney">
+<html lang="en" ng-app="smartpool">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="index.controller.js"></script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
 </head>
 <body>
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class=" container-fluid">
+            <a class="navbar-brand">SmartPool</a>
+            <a class="navbar-text pull-right" href="#/user/{{model.user._id}}">Home</a>
+            <a class="navbar-text pull-right" href="#/user/{{model.user._id}}">Search Ride</a>
+            <a class="navbar-text pull-right" href="#/user/{{model.user._id}}">Profile</a>
+        </div>
+    </nav>
 
-<div ng-view></div>
+    <div ng-view></div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <center>
+                <a href="https://www.facebook.com/kaushikveluru" target="_blank">
+                    <img src="images/fb.jpg" class="contact-img" height="20" width="20" />
+                </a>
+                <a href="https://www.linkedin.com/in/kaushikveluru" target="_blank">
+                    <img src="images/linkedin.jpg" class="contact-img" height="20" width="20" />
+                </a>
+            </center>
+        </div>
+    </nav>
+</div>
 </body>
 </html>
