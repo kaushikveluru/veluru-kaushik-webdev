@@ -7,7 +7,9 @@ module.exports = function(app){
         {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia", email: "charly.garcia@gmail.com"  },
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi", email: "jose.annunzi@gmail.com" }
     ];
-
+    app.get('/api/',function (req,res) {
+        res.send({mess: "runinng"});
+    });
     app.post('/api/user',createUser);
     app.get('/api/user',findUser);
     app.get('/api/user/:uid',findUserById);
