@@ -11,6 +11,9 @@
         vm.login = login;
 
         function login(user){
+            if(user == null){
+                vm.error = "Empty username or password"
+            }
             var promise = UserService.findUserByCredentials(user.username,user.password);
             promise
                 .success(function(user){
@@ -23,6 +26,7 @@
                     }
                 })
                 .error(function(err){
+                    vm.error = err;
                     console.log(err);
                 })
         }

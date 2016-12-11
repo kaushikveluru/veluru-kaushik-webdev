@@ -59,7 +59,7 @@ module.exports=function(app){
         var wid = req.params.websiteId;
         console.log("updating the website:"+wid)
         for(var w in websites) {
-            if(websites[w]._id === wid) {
+            if(websites[w]._id == wid) {
                 websites[w] = website;
             }
         }
@@ -68,7 +68,7 @@ module.exports=function(app){
     function deleteWebsite(req,res){
         var wid = req.params.websiteId;
         for(var w in websites) {
-            if(websites[w]._id === wid) {
+            if(websites[w]._id == wid) {
                 websites.splice(w, 1);
             }
         }

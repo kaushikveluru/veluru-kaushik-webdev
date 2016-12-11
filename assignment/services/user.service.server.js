@@ -68,7 +68,7 @@ module.exports = function(app){
     function findUserById(req,res){
         var userId = req.params.uid;
         for(var u in users){
-            if(users[u]._id === userId){
+            if(users[u]._id == userId){
                 res.send(users[u]);
                 return;
             }
@@ -91,7 +91,7 @@ module.exports = function(app){
     function deleteUser(req,res){
         var userId = req.params.uid;
         for(var u in users){
-            if(users[u]._id === userId){
+            if(users[u]._id == userId){
                 users.splice(u,1);
                 return;
             }

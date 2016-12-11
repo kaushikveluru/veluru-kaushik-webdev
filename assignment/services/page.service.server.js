@@ -14,7 +14,9 @@ module.exports = function(app){
 
     function createPage(req,res){
         var page = req.body;
-        page._id = (new Date()).getTime();
+        var websiteId = req.params.websiteId;
+        page._id = pages.length+1;
+        page.websiteId = websiteId;
         pages.push(page);
         res.send(pages);
     }
@@ -22,6 +24,7 @@ module.exports = function(app){
         var wid = req.params.websiteId;
         var result = [];
         for(var p in pages) {
+
             if(pages[p].websiteId == wid) {
                 result.push(pages[p]);
             }
@@ -30,21 +33,29 @@ module.exports = function(app){
     }
 
     function findPageById(req,res){
+
         var pid = req.params.pageId;
-        var pg = pages.filter(function(page){
-            return page._id === pid;
-        });
-        if(pg.length == 1)
-            res.send(pg[0]);
-        else
+        var pagesList=[];
+        for(var p in pages){
+            if(pages[p]._id == pid){
+                pagesList.push(pages[p])
+            }
+        }
+        if(pagesList.length == 1){
+            res.send(pagesList[0]);
+
+        }
+        else{
             res.send('0');
+        }
+
     }
 
     function updatePage(req,res){
         var page = req.body;
         var pid = req.params.pageId;
         for(var p in pages) {
-            if(pages[p]._id === pid) {
+            if(pages[p]._id == pid) {
                 pages[p] = page;
             }
         }
@@ -54,7 +65,7 @@ module.exports = function(app){
     function deletePage(req,res){
         var pageId = req.params.pageId;
         for(var p in pages) {
-            if(pages[p]._id === pageId) {
+            if(pages[p]._id == pageId) {
                 pages.splice(p, 1);
             }
         }
