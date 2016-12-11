@@ -24,10 +24,11 @@ module.exports = function(app){
     }
 
     function findAllWidgetsForPage(req,res){
-        var pid = parseInt(req.params.pageId);
+        var pid = req.params.pageId;
         var result = [];
         for(var wg in widgets) {
-            if(widgets[wg].pageId === pid) {
+
+            if(widgets[wg].pageId == pid) {
                 result.push(widgets[wg]);
             }
         }
@@ -43,6 +44,22 @@ module.exports = function(app){
             res.send(wg[0]);
         else
             res.send('0');
+
+
+        var wgid = req.params.widgetId;
+        var widgetsList=[];
+        for(var wg in widgets){
+            if(widgets[wg]._id == wgid){
+                widgetsList.push(widgets[wg])
+            }
+        }
+        if(widgetsList.length == 1){
+            res.send(widgetsList[0]);
+
+        }
+        else{
+            res.send('0');
+        }
     }
 
     function updateWidget(req,res){

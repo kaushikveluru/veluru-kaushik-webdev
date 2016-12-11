@@ -1,49 +1,61 @@
-
-<div class="container">
-
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class=" container-fluid">
-			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-text pull-left">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget" class="navbar-brand">Widgets</a>
-			<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new">
-				<span class="glyphicon glyphicon-plus"></span>
-			</a>
-		</div>
-	</nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<a class="navbar-text pull-left" href="#/user/{{model.uid}}/website/{{model.wid}}/page">
+			<span class="glyphicon glyphicon-chevron-left white"></span>
+		</a>
+		<a class="navbar-brand">Widgets</a>
+		<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new">
+			<span class="glyphicon glyphicon-plus white"></span>
+		</a>
+	</div>
+</nav>
 
 
-		<div class="container-fluid" ng-switch="widget.widgetType" ng-repeat="widget in model.widgets">
-				<div ng-switch="widget.size" ng-switch-when="HEADER">
-					<h1 ng-switch-when="1">{{widget.text}}</h1>
-					<h2 ng-switch-when="2">{{widget.text}}</h2>
-					<h3 ng-switch-when="3">{{widget.text}}</h3>
-					<h4 ng-switch-when="4">{{widget.text}}</h4>
-					<h5 ng-switch-when="5">{{widget.text}}</h5>
-					<h6 ng-switch-when="6">{{widget.text}}</h6>
-					<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-						<span class="glyphicon glyphicon-cog"></span>
-					</a>
-
+<div class="container-fluid" id="sortable">
+	<div ng-repeat="widget in model.widgets" class="list-group" id="{{widget._id}}">
+		<div class="relative-position">
+			<div class="container-fluid no-padding-right">
+				<div ng-switch="widget.widgetType">
+					<div ng-switch-when="heading">
+						<div ng-switch="widget.size">
+							<h1 ng-switch-when="6" class="no-top-margin">{{widget.text}}</h1>
+							<h2 ng-switch-when="5" class="no-top-margin">{{widget.text}}</h2>
+							<h3 ng-switch-when="4" class="no-top-margin">{{widget.text}}</h3>
+							<h4 ng-switch-when="3" class="no-top-margin">{{widget.text}}</h4>
+							<h5 ng-switch-when="2" class="no-top-margin">{{widget.text}}</h5>
+							<h6 ng-switch-when="1" class="no-top-margin">{{widget.text}}</h6>
+						</div>
+					</div>
+					<div ng-switch-when="html">
+						<p>{{widget.text}}</p>
+					</div>
+					<div ng-switch-when="image">
+						<img class="img-responsive" width="{{widget.width}}" ng-src="{{model.widgetUrl(widget)}}" alt="Sample Image"/>
+					</div>
+					<div ng-switch-when="youtube" embed-responsive>
+						<iframe class="embed-responsive-item" width="{{widget.width}}" ng-src="{{model.widgetUrl(widget)}}"></iframe>
+					</div>
 				</div>
-			<div ng-switch-when="IMAGE">
-				image
 			</div>
-
-			<div ng-switch-when="YOUTUBE">
-				<iframe width="{{widget.width}}" height="315" ng-src="{{model.checkSafeYouTubeURL(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+			<div class="absolute-position list-element-menu no-padding-right">
+				<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
+					<span class="glyphicon glyphicon-cog"></span></a>
+				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
 			</div>
-			<div ng-switch-when="HTML" ng-bind-html="model.checkSafeHTML(widget.text)"></div>
 		</div>
-
-
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
-				<span class="glyphicon glyphicon-user"></span>
-			</a>
-		</div>
-	</nav>
-
+	</div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+	<div class="container-fluid">
+		<a class="navbar-text nav-left-xs pull-left" href="#">
+			<span class="glyphicon glyphicon-play white"></span>
+		</a>
+		<a class="navbar-text pull-left" href="#">
+			<span class="glyphicon glyphicon-eye-open white"></span>
+		</a>
+		<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
+			<span class="glyphicon glyphicon-user white"></span>
+		</a>
+	</div>
+</nav>

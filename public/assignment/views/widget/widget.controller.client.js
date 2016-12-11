@@ -6,25 +6,21 @@
         .controller("EditWidgetController",EditWidgetController)
 
     function WidgetListController($routeParams,WidgetService,$sce){
+            console.log("in widget list controller")
         var vm = this;
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
-        vm.widgets = WidgetService.findWidgetsByPageId(vm.pid)
-        vm.checkSafeHTML = checkSafeHTML;
-        vm.checkSafeYouTubeURL = checkSafeYouTubeURL;
 
-        function checkSafeHTML(html){
-            return $sce.trustAsHtml(html)
-
+        function init(){
+            WidgetService.findWidgetsByPageId(vm.pid)
+                .success(function(widgets){
+                    vm.widgets = widgets;
+                })
+                .error(function(err){console.log(err)})
         }
+        init();
 
-        function checkSafeYouTubeURL(url,$sce ){
-            var parts = url.split("/");
-            url = "https://www.youtube.com/embed/"+parts[parts.length-1];
-            console.log(url)
-            return $sce.trustAsResourceUrl(url)
-        }
 
 
     }
@@ -35,6 +31,40 @@
         vm.uid = $routeParams.uid;
         vm.wid = $routeParams.wid;
         vm.pid = $routeParams.pid;
+        vm.type = $routeParams.type;
+        vm.widgetId = (new Date()).getTime();
+        vm.createWidget = createWidget;
+
+        function init() {
+            WidgetService.findWidgetsByPageId(pageId)
+                .success(function(widgets){
+                    vm.widgets = widgets;
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+        }
+        init();
+
+        function createWidget(widget){
+            widget.widgetType = vm.type;
+            widget.width += '%';
+            widget._id = vm.widgetId;
+            WidgetService.createWidget(vm.pid, widget)
+                .success(function(widget){
+                    init();
+                    $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget");
+                })
+                .error(function(err){
+                    console.log(err);
+                });
+        }
+
+
+        function goToWidget(type) {
+            vm.type = type;
+            $location.url("/user/" + vm.uid + "/website/" + vm.wid + "/page/" + vm.pid + "/widget/new/" + type);
+        }
 
     }
 
