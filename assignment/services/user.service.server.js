@@ -33,11 +33,12 @@ module.exports = function(app){
 
 
     function createUser(req,res){
-        console.log("create user in service side")
         var user = req.body;
-        user._id = users.count+1;
+        user._id = users.length+1;
+        user.firstName = user.username;
+        user.lastName = user.username;
+        user.email = user.username+"@gmail.com";
         users.push(user);
-        console.log("user created: "+user);
         res.send(user);
     }
 

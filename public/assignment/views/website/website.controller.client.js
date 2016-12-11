@@ -9,8 +9,6 @@
 
         var vm = this;
         vm.uid = $routeParams.uid;
-
-
         var websites = WebSiteService.getAllWebsites();
 
         var tempWebsites=[];
