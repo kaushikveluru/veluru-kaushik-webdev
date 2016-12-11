@@ -11,9 +11,6 @@ app.use(express.static(__dirname + '/public'));
 require ("./test/app.js")(app);
 require("./assignment/app.js")(app);
 
-app.get("/",function(){
-    res.send({message:"default page"})
-})
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
