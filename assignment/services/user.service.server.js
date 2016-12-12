@@ -9,9 +9,6 @@ module.exports = function(app,model){
     app.delete("/api/user/:uid",deleteUser);
 
 
-
-
-
     function findUser(req,res){
 
         var params = req.params;
