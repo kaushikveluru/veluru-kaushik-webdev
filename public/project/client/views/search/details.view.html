@@ -1,0 +1,78 @@
+<div class="container-fluid add-padding">
+    <div class="col-lg-10 col-md-10">
+
+        <div class="col-sm-8 col-sm-offset-2 card elevation1">
+            <div class="col-sm-10 modify-font">
+
+                <h2 class="site-color"><a
+                        href="{{model.info.response.venue.url}}">{{model.info.response.venue.name}}</a></h2>
+                <p class="site-color"><i>"{{model.info.response.venue.tips.groups[0].items[1].text}}"</i></p>
+
+                <p>
+                    {{model.info.response.venue.location.address}}, {{model.info.response.venue.location.city}},
+                    {{model.info.response.venue.location.country}}
+                    <br>
+                    <span class="glyphicon glyphicon-phone"></span> {{model.info.response.venue.contact.phone}}</p>
+                <div>
+                    <span ng-repeat="i in model.info.response.venue.categories" class="badge">{{i.name}}</span>
+                </div>
+                <br>
+
+            </div>
+            <div class="col-sm-2 pull-right">
+                <p>
+                <h2 class="site-color">{{model.info.response.venue.rating}}/10</h2>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 card elevation1">
+                <div class="form-header">
+                    <h3 class="site-color">
+                        Write a Review!
+                    </h3>
+                    <form class="form-horizontal">
+                            <textarea placeholder="Write a review!" ng-model="model.review"
+                                      class="form-control review-textarea" rows="2" cols="30"></textarea>
+                        <button class="btn btn-primary"
+                                ng-click="model.addReview(model.info.response.venue,model.review)"
+                                class="btn btn-primary site-color-background form-control">Submit a Review
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 card elevation1">
+                <h3 class="site-color">User Reviews</h3>
+                <hr>
+                <ul ng-repeat="i in model.allReviews ">
+                    <li class="site-color">
+                        <b>@{{i.username}}</b>
+                        &nbsp; &nbsp;
+                        <button ng-click="model.follow(i.username)"
+                                ng-show="user.follows.indexOf(i.username) == -1 && user.username != i.username"
+                                class="btn btn-danger register-button">Follow
+                        </button>
+                        <button ng-click="model.removeFollow(i.username)"
+                                ng-show="user.follows.indexOf(i.username) > -1" class="btn btn-danger register-button">
+                            Following
+                        </button>
+                    </li>
+                    <p><b>{{i.reviews}}</b></p>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+

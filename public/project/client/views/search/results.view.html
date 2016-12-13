@@ -1,0 +1,35 @@
+<div class="users-image">
+<div class="container-fluid banner site-color-background1 transparent">
+    <div class="container search-header">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="pull-left">Search Results for {{name}}:</h3>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="pull-right">1-10</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="col-lg-6">
+        <div class="card elevation1 search-result" ng-repeat="hotel in info.response.venues">
+            <a href="#/details/{{hotel.id}}">
+                <div class="row container-fluid search-content">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <h3>{{hotel.name}}</h3>
+                        <p>
+                            <i>
+                                Category: {{hotel.categories[0].name}}
+                            </i>
+                        </p>
+                        <p>Address: {{hotel.location.address}},{{hotel.location.city}},{{hotel.location.country}}</p>
+                    </div>
+
+                </div>
+            </a>
+            </div>
+    </div>
+</div>
+</div>
+
