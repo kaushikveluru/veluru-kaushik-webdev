@@ -27,10 +27,10 @@
                     <div class="container-fluid">
                         <div ng-repeat="username in model.follows track by $index">
                             <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-sm-8">
                                     <p><b>{{username}}</b></p>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-sm-2">
 
                                     <a  ng-click = "model.deleteUsersIFollow(username)" role="button" class="btn btn-default btn-danger" aria-label="Add">
                                         <span class="glyphicon glyphicon-remove favourites" aria-hidden="true"></span>

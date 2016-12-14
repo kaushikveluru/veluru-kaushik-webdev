@@ -13,6 +13,7 @@
         var vm = this;
         vm.deleteReview = deleteReview;
         vm.updateReview = updateReview;
+        vm.selectReview = selectReview;
         var selectedIndex = null;
         var username = $routeParams.username;
 
