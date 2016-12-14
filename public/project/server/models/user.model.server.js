@@ -19,9 +19,7 @@ module.exports = function(db, mongoose) {
         findUserById: findUserById,
         findAllUsers :findAllUsers,
         findUserByUsername: findUserByUsername,
-        getFavourites : getFavourites,
-        addFavourites : addFavourites,
-        deleteFavourites : deleteFavourites,
+
         addfollowers : addfollowers,
         getUsersIFollow : getUsersIFollow,
         deleteUsersIFollow : deleteUsersIFollow,
@@ -63,7 +61,6 @@ module.exports = function(db, mongoose) {
     function updateUser(userId, user){
 
         delete user._id;
-        console.log("inside model update user"+user);
         return UserModel.update({_id: userId}, {$set: user});
 
     }
@@ -94,32 +91,7 @@ module.exports = function(db, mongoose) {
     }
 
 
-    function getFavourites(userId){
 
-       return UserModel.findById(userId).select("favourites");
-
-    }
-
-    function addFavourites(userId,fav) {
-
-        console.log("inside fav model");
-
-
-        return UserModel.findById(userId)
-            .then(function(user) {
-                    user.favourites.push(fav);
-                    return user.save();
-                }
-            );
-    }
-
-    function deleteFavourites(userID, favId){
-
-        return UserModel.update(
-            { _id: userID },
-            { $pull: { 'favourites': { _id : favId} } }
-        );
-    }
 
 
     function addfollowers(userid,username){

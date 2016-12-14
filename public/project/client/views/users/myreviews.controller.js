@@ -12,14 +12,11 @@
 
         var vm = this;
         vm.deleteReview = deleteReview;
-        vm.selectReview = selectReview;
         vm.updateReview = updateReview;
         var selectedIndex = null;
         var username = $routeParams.username;
 
         function init(){
-
-            console.log("inside myreviews controller init method")
 
             var currUser = $rootScope.user;
             if (currUser != null) {

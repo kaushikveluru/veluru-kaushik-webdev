@@ -44,7 +44,8 @@ module.exports = function(db, mongoose) {
     }
 
     function updateReview(review){
-
+        console.log("in server model ")
+        console.log(review)
         return ReviewModel.update(
 
             {'_id' : review._id},

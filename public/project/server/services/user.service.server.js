@@ -17,9 +17,6 @@ module.exports = function(app, userModel) {
     app.get("/api/project/users", auth, findAllUsers);
     app.get("/api/project/userbyname/:username",findUserByUsername)
     app.get("/api/project/user/:userId",findUserById)
-    app.get("/api/project/user/:userId/favourites",getFavourites)
-    app.post("/api/project/user/:userId/favourites",addFavourites)
-    app.delete("/api/project/user/:userId/deletefavourite/:id", deleteFavourite);
     app.post("/api/project/user/:userId/follows/:username",addfollowers);
     app.get("/api/project/user/:userId/follows",getUsersIFollow);
     app.delete("/api/project/user/:userId/follows/:username",deleteUsersIFollow)
@@ -158,10 +155,10 @@ module.exports = function(app, userModel) {
     function register(req, res){
         var newUser = req.body;
 
-        if(newUser.username === "mounica") {
+        if(newUser.username === "kaushik") {
             newUser.roles = ['admin'];
         }else{
-            newUser.roles = ['student'];
+            newUser.roles = ['customer'];
         }
 
         userModel
@@ -200,7 +197,7 @@ module.exports = function(app, userModel) {
         var newUser = req.body;
 
         if(!newUser.roles || !newUser.roles.length > 0)
-            newUser.roles = ["student"];
+            newUser.roles = ["customer"];
         // first check if a user already exists with the username
         userModel
             .findUserByUsername(newUser.username)
@@ -257,7 +254,6 @@ module.exports = function(app, userModel) {
     }
 
     function deleteUser(req, res) {
-        console.log("Inside server side deleteUser");
         if (isAdmin(req.user)) {
             var userId = req.params.userId;
             userModel.deleteUserById(userId)
@@ -334,52 +330,6 @@ module.exports = function(app, userModel) {
 
 
 
-    function getFavourites(req, res){
-        var userId  = req.params.userId;
-        userModel.getFavourites(userId)
-            .then (
-            function (response) {
-
-                res.json(response.favourites);
-                //return restaurantModel.findRestaurantsByIds(response.favourites);
-
-            },
-            function (err) {
-                res.status(400).send(err);
-            }
-            );
-
-    }
-
-    function addFavourites(req, res){
-        console.log("inside addfavourites in server");
-        var userId  = req.params.userId;
-        var newdata = req.body;
-        var favourites = userModel.addFavourites(userId, newdata)
-            .then (
-            function (favourites) {
-                console.log("receiving favs"+favourites);
-                res.json (favourites);
-            },
-            function (err) {
-                res.status(400).send(err);
-            }
-        );
-    }
-
-    function deleteFavourite(req,res) {
-        var userID = req.params.userId;
-        var favourite = req.params.id;
-        userModel.deleteFavourites(userID, favourite)
-            .then(
-                function (stats) {
-                    res.send(200);
-                },
-                function (err) {
-                    res.status(400).send(err);
-                }
-            );
-    }
 
 
     function addfollowers(req,res){
