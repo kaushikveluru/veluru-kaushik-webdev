@@ -11,9 +11,6 @@
     function detailsController($routeParams, FoursquareService, $rootScope, UserService, $location, ReviewService,RestaurantService) {
 
         var vm = this;
-        vm.addFavourite = addFavourite;
-        vm.deleteFavourite = deleteFavourite;
-        vm.isVenueInFavourites = isVenueInFavourites;
         vm.addReview = addReview;
         vm.follow = follow;
         vm.removeFollow = removeFollow;
@@ -27,6 +24,9 @@
             RestaurantService.findAllReviewsforHotel(hotelId)
                 .then(function (response) {
                     vm.allReviews = response.data;
+                    if(vm.allReviews.length==0){
+                        vm.noreviews="Be the first one to write a review!"
+                    }
                 });
 
             if ($rootScope.user) {
@@ -49,62 +49,9 @@
 
         init();
 
-        function isVenueInFavourites(favourites, id) {
-            for(var i in favourites) {
-                if(favourites[i].restaurantId === id)
-                    return true;
-            }
-            return false;
-        }
 
 
-        function addFavourite(venue){
-            if($rootScope.user){
 
-                if (findres == "") {
-                    var details = {
-
-                        "restaurantId": venue.id,
-                        "restaurantName": venue.name,
-                    }
-
-                    RestaurantService.addRestaurantById(details);
-                }
-
-                var userFav = $rootScope.user.favourites;
-                for(var index in userFav){
-                    if(userFav[index].restaurantId === venue.id){
-                        alert("Already added to favourites")
-                        return;
-                    }
-                }
-
-
-                var favourites = {
-
-                    "restaurantId": venue.id,
-                    "restaurantName": venue.name,
-                }
-                UserService.addFavourite($rootScope.user._id,favourites)
-                    .then(function(response){
-                    init();
-                });
-
-            }else {
-                alert("Please login to add favourites");
-                $location.url("/login");
-            }
-
-        }
-
-        function deleteFavourite(venue){
-            if($rootScope.user) {
-                UserService.deleteFavourites($rootScope.user._id,venue.id)
-                    .then(function(response){
-                        init();
-                    });
-            }
-        }
 
 
         function checkIfUserReviewed(venue,review){
@@ -147,7 +94,7 @@
         }
 
         function addReview(venue,review){
-
+            vm.allReviews=""
             if($rootScope.user) {
 
                 if (review != null) {
@@ -160,6 +107,7 @@
                         }
 
                         RestaurantService.addRestaurantById(details);
+                        init();
                     }
 
 

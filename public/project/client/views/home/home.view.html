@@ -1,7 +1,6 @@
 <div class="image height-100-pct">
     <div class="container-fluid center-block placing">
         <div class="row" id="text">
-            <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
             <div class=" col-lg-offset-3 col-lg-6  container-fluid card-mainpage">
                 <br>
                 <br>
@@ -38,7 +37,7 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 ">
+                    <div class="col-sm-3 ">
                         <button role="button" ng-click="model.search(model.name, model.place)"
                                 class="btn btn-warning btn-block search-button-mainpage center-block">
                             Search</span></button>
@@ -48,12 +47,14 @@
                 <br>
 
             </div>
-            <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
         </div>
+        <br>
+        <br>
 
+        <div ng-show="model.error" class="alert alert-danger site-color col-sm-6 col-sm-offset-3" role="alert">{{model.error}}</div>
     </div>
 </div>
-<!--</section>-->
+
 
 
 

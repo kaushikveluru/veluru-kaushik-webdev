@@ -58,7 +58,7 @@
                         $location.url("/search/" + finalName);
                     }else{
 
-                        alert(" No results found");
+                        vm.error = "Oops!! No results were found"
                         return;
                     }
                 });

@@ -31,7 +31,7 @@
                                 var currentUser = response.data;
                                 if(currentUser){
                                     $rootScope.user = currentUser;
-                                    $location.url("/profile");
+                                    $location.url("/home");
                                 }else{
                                     vm.message = "Username already exists";
                                     vm.user.password = null;

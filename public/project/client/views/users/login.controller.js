@@ -28,7 +28,7 @@
                         if(currentUser) {
                         $rootScope.user = response.data;
                         vm.user.username = $rootScope.user.username;
-                        $location.url("/profile");
+                        $location.url("/home");
                     }
 
                     else{
