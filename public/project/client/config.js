@@ -53,6 +53,32 @@
                 }
 
             })
+            .when("/myreviews", {
+                templateUrl: "views/users/myreviews.view.html",
+                controller : "MyReviewsController",
+                controllerAs : "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
+
+            .when("/followers", {
+                templateUrl: "views/users/followers.view.html",
+                controller : "FollowersController",
+                controllerAs : "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
+            .when("/following", {
+                templateUrl: "views/users/following.view.html",
+                controller : "FollowingController",
+                controllerAs : "model",
+                resolve: {
+                    getLoggedIn: getLoggedIn
+                }
+            })
+
 
             .when("/register", {
                 templateUrl: "views/users/register.view.html",

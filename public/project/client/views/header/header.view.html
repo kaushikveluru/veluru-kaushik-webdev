@@ -13,6 +13,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-header" ng-if="user">
+                    Hi {{user.username}}
+                </li>
                 <li ng-class="{'active': $location.url() == '/home'}">
                     <a href="#/home">Home</a>
                 </li>
@@ -25,11 +28,18 @@
                 <li class="dropdown" ng-class="{'active': $location.url() == '/profile'}" ng-if = "user">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user.username}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#/profile">Profile</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li ng-class="{'active': $location.url() == '/profile'}" ng-if = "user">
+                            <a href="#/profile">Profile</a>
+                        </li>
+                        <li ng-class="{'active': $location.url() == '/myreviews'}" ng-if = "user">
+                            <a href="#/myreviews">My Reviews</a>
+                        </li>
+                        <li ng-class="{'active': $location.url() == '/following'}" ng-if = "user">
+                            <a href="#/following">Following</a>
+                        </li>
+                        <li ng-class="{'active': $location.url() == '/followers'}" ng-if = "user">
+                            <a href="#/followers">Followers</a>
+                        </li>
                     </ul>
                 </li>
                 <li ng-class="{'active': $location.url() == '/admin'}" ng-show="user.roles.indexOf('admin') >= 0">

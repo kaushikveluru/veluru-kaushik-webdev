@@ -1,0 +1,42 @@
+<div class="banner new-background elevation2">
+    <div class="container">
+        <div class="row profile-header">
+            <div class="inverted-color profile-details">
+                <h1 class="site-color"> Welcome {{user.username}}!!!</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="center-block ">
+                <div class="form-header card elevation1">
+                    <h2 class="site-color">Following</h2>
+                    <hr>
+                    <div class="container-fluid">
+                        <div ng-repeat="username in model.follows track by $index">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p><b>{{username}}</b></p>
+                                </div>
+                                <div class="col-lg-2">
+
+                                    <a  ng-click = "model.deleteUsersIFollow(username)" role="button" class="btn btn-default btn-danger" aria-label="Add">
+                                        <span class="glyphicon glyphicon-remove favourites" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
