@@ -48,7 +48,7 @@ body {
 }
 
 .image{
-
+    background-image: url("../images/seasonal.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -176,7 +176,9 @@ body {
 }
 
 .new-background{
-    background-color: white;
+    background-image: url("../images/australia_fairy_bread.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .profile-header {
     padding: 50px 0 20px 0;
@@ -295,7 +297,7 @@ b, strong {
 .search-image {
     width: 80%;
     height: 80%;
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: #0ccbc3;
     border-style: dotted;
 }

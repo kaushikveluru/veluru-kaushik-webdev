@@ -55,7 +55,7 @@
                     if(result != "") {
                         $rootScope.info = response.data;
                         $rootScope.name = name;
-                        $location.url("/search/" + name);
+                        $location.url("/search/" + finalName);
                     }else{
 
                         alert(" No results found");
