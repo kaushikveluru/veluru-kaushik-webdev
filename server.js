@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 
 
 var connection_string = '127.0.0.1:27017/test';
+
 // if OPENSHIFT env variables are present, use the available connection info:
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -41,8 +42,8 @@ app.use(passport.session())
 
 
 
-//require ("./test/app.js")(app);
-//require("./assignment/app.js")(app);
+require ("./test/app.js")(app);
+require("./assignment/app.js")(app);
 require("./public/project/server/app.js")(app,db,mongoose);
 
 
