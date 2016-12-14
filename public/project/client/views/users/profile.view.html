@@ -1,62 +1,66 @@
 <div class="banner new-background elevation2">
     <div class="container">
-        <div class="row profile-header">
-            <div class="inverted-color profile-details">
-                <h1 class="site-color"> Welcome {{user.username}}!!!</h1>
+
+        <div class="row">
+            <div class="col-sm-4 profile-nav-section">
+                <a class="profile-nav" href="#/myreviews">My Reviews</a>
+            </div>
+            <div class="col-sm-4 profile-nav-section">
+                <a class="profile-nav" href="#/followers">Followers</a>
+            </div>
+            <div class="col-sm-4 profile-nav-section">
+                <a class="profile-nav" href="#/following">Following</a>
             </div>
         </div>
     </div>
-
 </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
-            <div class="card elevation2 register-card center-block">
-                <div class="form-header text-center site-color-background">
-                    <h2 class="specific">My Details</h2>
+            <div class="card register-card center-block">
+                <div class="form-header text-center site-color-background curvy">
+                    <h4 class="specific">My Details</h4>
                 </div>
                 <div class="container-fluid form-container">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="username">Username :</label>
+                            <label class="control-label col-sm-4" for="username">Username :</label>
                             <div class="col-sm-8">
                                 <input type="text" ng-model="model.user.username" id="username"
                                        class="form-control text-input center-block" placeholder="First Name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="password">Password :</label>
+                            <label class="control-label col-sm-4" for="password">Password :</label>
                             <div class="col-sm-8">
                                 <input type="password" ng-model="model.user.password" id="password"
                                        class="form-control text-input center-block" placeholder="Password">
                             </div>
                         </div>
-                        <hr>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="firstname">First Name:</label>
+                            <label class="control-label col-sm-4" for="firstname">First Name:</label>
                             <div class="col-sm-8">
                                 <input type="text" ng-model="model.user.firstName" id="firstname"
                                        class="form-control text-input center-block" placeholder="First Name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="lastname">Last Name:</label>
+                            <label class="control-label col-sm-4" for="lastname">Last Name:</label>
                             <div class="col-sm-8">
                                 <input type="text" ng-model="model.user.lastName" id="lastname"
                                        class="form-control text-input center-block" placeholder="Last Name">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="email1">Email:</label>
+                            <label class="control-label col-sm-4" for="email1">Email:</label>
                             <div class="col-sm-8">
                                 <input type="email" ng-model="model.user.email" id="email1"
                                        class="form-control text-input center-block" placeholder="abc@abc.com">
                             </div>
                         </div>
-                        <hr>
                         <div class="form-group">
                             <button value="Update" ng-click="model.update(model.user)"
-                                    class="btn btn-info btn-block center-block">Update
+                                    class="btn btn-info center-block">Update
                             </button>
                         </div>
                     </form>

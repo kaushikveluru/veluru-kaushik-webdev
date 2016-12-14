@@ -61,7 +61,7 @@ body {
 }
 
 .users-image{
-    background-color: black;
+    background-image: url("../images/final.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -118,23 +118,25 @@ body {
 }
 
 .text-input-mainpage {
-    height: 60px;
+    height: 40px;
     border:3px;
     border-radius: 10px;
     border-style: solid;
-    border-color: #cb202d;
+    border-color: #0ccbc3;
     box-shadow:none;
     background: white;
     font-weight: bold;
 }
 
+.glyph{
+    height: 10px;
+}
 
 .search-button-mainpage {
-    height: 60px;
+    height: 40px;
     border-radius: 10px;
     border-style: solid;
-    border-color: #cb202d;
-    font-size: 20px;
+    border-color: #0ccbc3;
     font-weight: 700;
     color: white;
 }
@@ -154,7 +156,7 @@ body {
     border: 3px;
     border-style: solid;
     border-radius: 10px;
-    border-color: #cb202d;
+    border-color: #0ccbc3;
 }
 
 .btn-group>.btn:first-child {
@@ -162,11 +164,11 @@ body {
     border: 3px;
     border-style: solid;
     border-radius: 10px;
-    border-color: #cb202d;
+    border-color: #0ccbc3;
 }
 
 .site-color-background {
-    background-color: #cb202d;
+    background-color: #0ccbc3;
 }
 .site-color-background1 {
     background-color: whitesmoke;
@@ -198,12 +200,12 @@ b, strong {
 }
 
 .site-color {
-    color: #cb202d;
+    color: #0ccbc3;
 }
 
 .register-button  {
-    background-color: #cb202d;
-    border-color: #cb202d;
+    background-color: #0ccbc3;
+    border-color: #0ccbc3;
     color: white !important;
 }
 
@@ -230,6 +232,7 @@ b, strong {
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
     color: black;
     background-color: #f0ad4e;
+    border-radius: 5px;
 }
 .elevation1 {
     box-shadow: 0 1px 3px #999;
@@ -242,14 +245,15 @@ b, strong {
 }
 
 .card-mainpage {
-    background: #cb202d;
-    opacity: 0.95;
+    background: #0ccbc3;
+    opacity: 0.75;
     z-index: 1;
+    border-radius: 10px;
 }
 
 .card-padding{
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .card a {
     text-decoration: none;
@@ -269,7 +273,7 @@ b, strong {
 }
 .review-textarea:focus {
     color: #eee;
-    background-color:  #cb202d;
+    background-color:  #0ccbc3;
 }
 .edit-review-textarea {
     border: none;
@@ -285,23 +289,32 @@ b, strong {
 }
 .edit-review-textarea:focus {
     color: #eee;
-    background-color:  #cb202d;
+    background-color:  #0ccbc3;
 }
 
 .search-image {
     width: 80%;
     height: 80%;
     border-radius: 10px;
-    border-color: #cb202d;
+    border-color: #0ccbc3;
     border-style: dotted;
 }
 
 .details-image {
     width: 300px;
     height: 350px;
-    border: #cb202d;
+    border: #0ccbc3;
     border-radius: 10px;
     border-style: solid;
+}
+
+.profile-nav-section{
+    padding-bottom: 20px;
+    text-align: center;
+    padding-top: 90px;
+}
+.curvy{
+    border-radius: 10px;
 }
 
 .form-header {
@@ -343,6 +356,15 @@ img {
     border-color: white;
 }
 
+.profile-nav{
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #f0ad4e;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    text-decoration: none; !important;
+}
+
 .banner {
     width: 100%;
     height: auto;
@@ -365,7 +387,7 @@ img {
     height: 60px;
     border: none;
     border-radius: 1px;
-    background-color: #cb202d;
+    background-color: #0ccbc3;
     padding-top: 10px;
     font-size: 18px;
 }
@@ -376,9 +398,10 @@ img {
 
 .navbar-fixed-top
 {
-    background-color: #cb202d;
+    background-color: #0ccbc3;
     font-weight: bold;
     border: none;
+    padding: 10px;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -391,7 +414,7 @@ img {
 }
 
 .form-heading{
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .text-right{
@@ -403,7 +426,7 @@ img {
 }
 
 .bg-primary {
-    background-color: #cb202d;
+    background-color: #0ccbc3;
 }
 
 .tab-pane{
@@ -412,7 +435,7 @@ img {
 }
 
 .footer {
-    background: #cb202d;
+    background: #0ccbc3;
     min-height: 100px;
     padding: 75px 100px 50px 100px;
     z-index: -999;
@@ -430,6 +453,6 @@ width: 100%;
 
 .glyphicon-heart:before {
     content: "\e005";
-    color: #cb202d;
+    color: #0ccbc3;
     font-size: 40px;
 }

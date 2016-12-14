@@ -1,35 +1,58 @@
-
-    <div class="image height-100-pct">
-        <div class="container-fluid center-block placing">
-            <div class="row" id="text">
-                <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
-                <div class=" col-lg-offset-3 col-lg-6  container-fluid card-mainpage">
-                    <br>
-                    <div class="row ">
-                        <div class="col-sm-6 col-md-6 col-lg-6 ">
+<div class="image height-100-pct">
+    <div class="container-fluid center-block placing">
+        <div class="row" id="text">
+            <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
+            <div class=" col-lg-offset-3 col-lg-6  container-fluid card-mainpage">
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 ">
                         <label class="sr-only" for="search"></label>
-                        <input type="text" ng-model="model.name" class="form-control text-input-mainpage center-block" aria-label="Text input with segmented button dropdown" id="search" placeholder="Search for Restaurants">
-                </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 card-mainpage">
-                    <label class="sr-only" for="location"></label>
-                    <input type="text" value="Boston" ng-model="model.place" class="form-control text-input-mainpage center-block" id="location" placeholder="Location">
-                </div>
-                <div class="col-sm-3 col-md-3 col-lg-3 ">
-                    <button role="button" ng-click="model.search(model.name, model.place)"  class="btn btn-warning btn-block search-button-mainpage center-block">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true">Search</span></button>
-                </div>
-            </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search glyph">
 
+                                    </span>
+                                </button>
+                            </div>
+                            <input type="text" ng-model="model.name" class="form-control text-input-mainpage center-block"
+                                   aria-label="Text input with segmented button dropdown" id="search"
+                                   placeholder="Search for Restaurants">
+
+                        </div>
                     </div>
-                <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
-                </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        <label class="sr-only" for="location"></label>
+                        <div class="input-group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default">
+                                    <span class="glyphicon glyphicon-map-marker glyph">
 
+                                    </span>
+                                </button>
+                            </div>
+                            <input type="text" value="Boston" ng-model="model.place"
+                                   class="form-control text-input-mainpage center-block " id="location"
+                                   placeholder="Location">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 ">
+                        <button role="button" ng-click="model.search(model.name, model.place)"
+                                class="btn btn-warning btn-block search-button-mainpage center-block">
+                            Search</span></button>
+                    </div>
+                </div>
+                <br>
+                <br>
+
+            </div>
+            <!--<div class="col-sm-3 col-md-3 col-lg-3 hidden-md hidden-sm hidden-xs"></div>-->
         </div>
+
     </div>
+</div>
 <!--</section>-->
 
 
