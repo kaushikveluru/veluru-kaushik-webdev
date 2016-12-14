@@ -43,7 +43,7 @@ app.use(passport.session())
 
 
 require ("./test/app.js")(app);
-require("./assignment/app.js")(app);
+require("./assignment/app.js")(app,db,mongoose);
 require("./public/project/server/app.js")(app,db,mongoose);
 
 
