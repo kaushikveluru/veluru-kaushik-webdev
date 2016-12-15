@@ -1,1 +1,36 @@
-<div ng-include="'views/widget/widget-' + model.widget.widgetType + '-edit.view.client.html'"></div>
+<nav class="navbar navbar-default navbar-fixed-top bg-primary">
+	<div class="container-fluid">
+		<a ng-click="model.checkIsWidgetIsValid()" class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header">
+		</a>
+		<div class="navbar-header-fixed">
+			<p class="navbar-brand header boldFont">Edit Widget</p>
+		</div>
+		<a ng-click="model.updateWidget()" class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right header">
+		</a>
+	</div>
+</nav>
+
+<div ng-switch="model.widget.widgetType">
+	<div ng-switch-when="HEADER">
+		<div ng-include="'views/widget/widget-heading.view.client.html'"></div>
+	</div>
+	<div ng-switch-when="HTML">
+		<div ng-include="'views/widget/widget-html.view.client.html'"></div>
+	</div>
+	<div ng-switch-when="IMAGE">
+		<div ng-include="'views/widget/widget-image.view.client.html'"></div>
+	</div>
+	<div ng-switch-when="YOUTUBE">
+		<div ng-include="'views/widget/widget-youtube.view.client.html'"></div>
+	</div>
+	<div ng-switch-when="TEXT">
+		<div ng-include="'views/widget/widget-text.view.client.html'"></div>
+	</div>
+</div>
+
+<nav class="navbar navbar-default bg-primary navbar-fixed-bottom ">
+	<div class="container-fluid">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon glyphicon-user pull-right" href="#/user/{{model.userId}}">
+		</a>
+	</div>
+</nav>

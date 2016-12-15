@@ -1,43 +1,77 @@
-<div class="container">
+<nav class="navbar navbar-default navbar-fixed-top bg-primary">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4 hidden-sm hidden-xs">
+				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website">
+				</a>
+				<div class="navbar-header-fixed">
+					<p class="navbar-brand header boldFont">Pages</p>
+				</div>
+				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+				</a>
+			</div>
+			<div class="col-md-8">
+				<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header hidden-md hidden-lg" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
+				</a>
+				<div class="navbar-header-fixed">
+					<p class="navbar-brand header boldFont">Edit Page</p>
+				</div>
+				<a ng-click="model.updatePage(model.page)" class="navbar-brand navbar-default bg-primary glyphicon glyphicon-ok pull-right header">
+				</a>
+			</div>
 
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class=" container-fluid">
-			<a href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-text pull-left">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a href="#" class="navbar-brand">Edit Page</a>
-			<a  href="#/user/{{model.uid}}/website/{{model.wid}}/page" class="navbar-text pull-right" >
-				<span class="glyphicon glyphicon-ok"></span>
-			</a>
-		</div>
-	</nav>
-
-	<form>
-
-		<div class="form-group">
-			<label for="name1">Name</label>
-			<input id="name1" type="text" class="form-control" ng-model="model.page.name" placeholder="Blog Post"/>
-		</div>
-
-		<div class="form-group">
-			<label for="description1">Title</label>
-			<textarea id="description1" class="form-control" ng-model="model.page.description" placeholder="Page Title"></textarea>
 		</div>
 
-		<div class="form-group">
-			<a ng-click="model.deletePage()" role="button" class="btn btn-danger form-control">Delete</a>
+	</div>
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 hidden-sm hidden-xs">
+			<ul class="list-unstyled">
+				<li ng-repeat="page in model.pages" class="text-primary list-group-item borderless">
+					<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget">{{page.name}}</a>
+					<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
+						<span class="glyphicon glyphicon-cog pull-right">
+						</span>
+					</a>
+				</li>
+			</ul>
 		</div>
+		<div class="verticalLine hidden-sm hidden-xs">
 
-
-	</form>
-
-
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-		<div class="container-fluid">
-			<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
-				<span class="glyphicon glyphicon-user"></span>
-			</a>
 		</div>
-	</nav>
+		<div class="col-md-8">
+			<form>
+				<div class="form-group">
+					<label for="page-name">Name</label>
+					<input type="text"
+					       ng-model="model.page.name"
+					       class="form-control"
+					       id="page-name"
+					       placeholder="Page Name"
+					       value="Blog Post">
+				</div>
+				<div class="form-group">
+					<label for="page-title">Title</label>
+					<input type="text"
+					       ng-model="model.page.title"
+					       class="form-control"
+					       id="page-title"
+					       placeholder="Page Title">
+				</div>
+				<a ng-click="model.deletePage()" class="btn btn-danger btn-block">Delete</a>
+				<div ng-show="model.error" class="alert alert-danger boxTopMargin" role="alert">{{model.error}}</div>
+			</form>
+		</div>
+	</div>
+
 
 </div>
+
+<nav class="navbar navbar-default bg-primary navbar-fixed-bottom ">
+	<div class="container-fluid">
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon glyphicon-user pull-right" href="#/user/{{model.userId}}">
+		</a>
+	</div>
+</nav>

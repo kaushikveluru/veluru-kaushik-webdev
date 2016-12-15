@@ -1,62 +1,94 @@
-<script src="../../config.js"></script>
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-text pull-left" href="#/user/{{model.uid}}/website/{{model.wid}}/page">
-			<span class="glyphicon glyphicon-chevron-left white"></span>
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page">
 		</a>
-		<a class="navbar-brand">Widgets</a>
-		<a class="navbar-text pull-right" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/new">
-			<span class="glyphicon glyphicon-plus white"></span>
+		<div class="navbar-header-fixed">
+			<p class="navbar-brand header boldFont">Widgets</p>
+		</div>
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-plus pull-right header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
 		</a>
 	</div>
 </nav>
 
-
-<div class="container-fluid" id="sortable">
-	<div ng-repeat="widget in model.widgets" class="list-group" id="{{widget._id}}">
+<div class="container-fluid" jga-sortable>
+	<div ng-switch="widget.widgetType"
+	     ng-repeat="widget in model.widgets"
+	     class="list-group">
+		<!--right side cog and menu-->
 		<div class="relative-position">
-			<div class="container-fluid no-padding-right">
-				<div ng-switch="widget.widgetType">
-					<div ng-switch-when="heading">
-						<div ng-switch="widget.size">
-							<h1 ng-switch-when="6" class="no-top-margin">{{widget.text}}</h1>
-							<h2 ng-switch-when="5" class="no-top-margin">{{widget.text}}</h2>
-							<h3 ng-switch-when="4" class="no-top-margin">{{widget.text}}</h3>
-							<h4 ng-switch-when="3" class="no-top-margin">{{widget.text}}</h4>
-							<h5 ng-switch-when="2" class="no-top-margin">{{widget.text}}</h5>
-							<h6 ng-switch-when="1" class="no-top-margin">{{widget.text}}</h6>
-						</div>
-					</div>
-					<div ng-switch-when="html">
-						<p>{{widget.text}}</p>
-					</div>
-					<div ng-switch-when="image">
-						<img class="img-responsive" width="{{widget.width}}" ng-src="{{model.widgetUrl(widget)}}" alt="Sample Image"/>
-					</div>
-					<div ng-switch-when="youtube" embed-responsive>
-						<iframe class="embed-responsive-item" width="{{widget.width}}" ng-src="{{model.widgetUrl(widget)}}"></iframe>
-					</div>
-				</div>
-			</div>
-			<div class="absolute-position list-element-menu no-padding-right">
-				<a href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget/{{widget._id}}">
-					<span class="glyphicon glyphicon-cog"></span></a>
+			<div class="absolute-position list-element-menu zero-right-padding">
+				<a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}"><span class="glyphicon glyphicon-cog"></span></a>
 				<a href="#"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+			</div>
+		</div>
+
+		<!-- header -->
+		<div class="relative-position">
+			<div ng-switch="widget.size"
+			     ng-switch-when="HEADER"
+			     class="container-fluid">
+				<h1 ng-switch-when="1">{{widget.text}}</h1>
+				<h2 ng-switch-when="2">{{widget.text}}</h2>
+				<h3 ng-switch-when="3">{{widget.text}}</h3>
+				<h4 ng-switch-when="4">{{widget.text}}</h4>
+				<h5 ng-switch-when="5">{{widget.text}}</h5>
+				<h6 ng-switch-when="6">{{widget.text}}</h6>
+			</div>
+		</div>
+
+		<!-- html -->
+		<div class="relative-position">
+			<div ng-switch-when="HTML"
+			     ng-bind-html="model.checkSafeHtml(widget.text)"
+			     class="container-fluid">
+			</div>
+		</div>
+
+		<!-- image -->
+		<div class="relative-position">
+			<div ng-switch-when="IMAGE"
+			     class="container-fluid">
+				<img ng-src="{{model.checkSafeImage(widget.url)}}" class="img-responsive" width="{{widget.width}}">
+			</div>
+		</div>
+
+		<!-- youtube -->
+		<div class="relative-position">
+			<div ng-switch-when="YOUTUBE"
+			     class="container-fluid youtube-widget">
+				<iframe ng-src="{{model.checkSafeYouTubeUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+
+		<!-- text input -->
+		<div class="relative-position">
+			<div ng-switch-when="TEXT"
+			     class="container-fluid">
+				<div ng-if="widget.formatted"
+				     text-angular ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+                                                ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+                                                ['indent','outdent'],['html']]">
+				</div>
+				<input ng-if="!widget.formatted && (!widget.rows || widget.rows===1)"
+				       placeholder="{{widget.placeholder}}"
+				       class="form-control"/>
+				<textarea ng-if="!widget.formatted && (widget.rows > 1)"
+				          rows="{{widget.rows}}"
+				          placeholder="{{widget.placeholder}}"
+				          class="form-control">
+					{{widget.text}}
+				</textarea>
 			</div>
 		</div>
 	</div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
 	<div class="container-fluid">
-		<a class="navbar-text nav-left-xs pull-left" href="#">
-			<span class="glyphicon glyphicon-play white"></span>
-		</a>
-		<a class="navbar-text pull-left" href="#">
-			<span class="glyphicon glyphicon-eye-open white"></span>
-		</a>
-		<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
-			<span class="glyphicon glyphicon-user white"></span>
+		<a class="navbar-brand navbar-default glyphicon glyphicon-play pull-left"></a>
+		<a class="navbar-brand navbar-default  glyphicon glyphicon-eye-open pull-left"></a>
+		<a class="navbar-brand navbar-default glyphicon glyphicon glyphicon-user pull-right" href="#/user/{{model.userId}}">
 		</a>
 	</div>
 </nav>

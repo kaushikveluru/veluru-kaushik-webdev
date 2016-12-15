@@ -1,30 +1,59 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top bg-primary">
 	<div class="container-fluid">
-		<a class="navbar-text pull-left" href="#/user/{{model.uid}}/website/{{model.wid}}/page/{{model.pid}}/widget">
-			<span class="glyphicon glyphicon-chevron-left white"></span>
+		<a class="navbar-brand navbar-default bg-primary glyphicon glyphicon-chevron-left header" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
 		</a>
-		<a class="navbar-brand">Choose Widget</a>
+		<div class="navbar-header-fixed">
+			<p class="navbar-brand header boldFont">Choose Widget</p>
+		</div>
 	</div>
 </nav>
 
+<ul class="list-unstyled">
+	<li class="text-primary list-group-item borderless">
+		<a ng-click="model.newWidget('header')">Header</a>
+	</li>
 
-<div class="container-fluid">
-	<br>
-	<div class="list-item">
-		<a ng-click="model.goToWidget('heading')">Header</a>
-	</div>
-	<div class="list-item">
-		<a ng-click="model.goToWidget('image')">Image</a>
-	</div>
-	<div class="list-item">
-		<a ng-click="model.goToWidget('youtube')">Youtube</a>
-	</div>
-</div>
+	<li class="text-primary list-group-item borderless">
+		<a href="#">Label</a>
+	</li>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
+	<li class="text-primary list-group-item borderless">
+		<a ng-click="model.newWidget('html')">HTML</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a ng-click="model.newWidget('text')">Text Input</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a href="#">Link</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a href="#">Button</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a ng-click="model.newWidget('image')">Image</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a ng-click="model.newWidget('youtube')">YouTube</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a href="#">Data Table</a>
+	</li>
+
+	<li class="text-primary list-group-item borderless">
+		<a href="#">Repeater</a>
+	</li>
+
+</ul>
+
+<nav class="navbar navbar-default navbar-fixed-bottom ">
 	<div class="container-fluid">
-		<a class="navbar-text pull-right" href="#/user/{{model.uid}}">
-			<span class="glyphicon glyphicon-user white"></span>
+		<a class="navbar-brand navbar-default glyphicon glyphicon glyphicon-user pull-right" href="#/user/{{model.userId}}">
 		</a>
 	</div>
 </nav>

@@ -1,37 +1,183 @@
-module.exports = function(app,model){
 
-    app.post("/api/widget/:pageId/widget", createWidget);
-    app.get("/api/widget/:pageId/widget", findAllWidgetsForPage);
-    app.get("/api/widget/:widgetId", findWidgetById);
-    app.put("/api/widget/:widgetId", updateWidget);
-    app.delete("/api/widget/:widgetId", deleteWidget);
+module.exports = function (app, model) {
+
+    var multer = require('multer'); // npm install multer --save
+    var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
+    var fs = require('fs');
+
+    app.post('/api/page/:pid/widget', createWidget);
+    app.get('/api/page/:pid/widget', findAllWidgetsForPage);
+    app.get('/api/widget/:wgid', findWidgetById);
+    app.put('/api/widget/:wgid', updateWidget);
+    app.delete('/api/widget/:wgid', deleteWidget);
+    app.post ("/api/upload", upload.single('myFile'), uploadImage);
+    app.put("/api/page/:pageId/widget", updateWidgetIndices);
 
 
-
-    function sortWidgets(req, res){
-        var pid = req.params.pageId;
-        var result = [];
-        for(var wg in widgets) {
-            if(widgets[wg].pageId === pid) {
-                result.push(widgets[wg]);
-            }
-        }
-        var initial = req.query.initial;
-        var final = req.query.final;
-        var temp = result[initial];
-        result.splice(initial, 1);
-        result.splice(final, 0, temp);
-        res.send(result);
+    /**
+     * creates a new widget for the given pageId
+     * @param req
+     * @param res
+     */
+    function createWidget(req, res) {
+        var pageId = req.params.pid;
+        var widget = req.body;
+        //create widget
+        // find page by ID
+        // add widget to the widgets array of page
+        model.widgetModel
+            .createWidget(pageId, widget)
+            .then(
+                function (widget) {
+                    model.pageModel
+                        .findPageById(pageId)
+                        .then(
+                            function (page) {
+                                model.pageModel
+                                    .updatePageWidgets(page, widget)
+                                    .then(
+                                        function (status) {
+                                            res.send(widget);
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
     }
 
+    /**
+     * finds widgets for a given pageId
+     * @param req
+     * @param res
+     */
+    function findAllWidgetsForPage(req, res) {
+        var pageId = req.params.pid;
+        model.widgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(
+                function (widgets) {
+                    res.send(widgets);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
+    }
 
+    /**
+     * finds a widget by widgetId
+     * @param req
+     * @param res
+     */
+    function findWidgetById(req, res) {
+        var widgetId = req.params.wgid;
+        model.widgetModel
+            .findWidgetById(widgetId)
+            .then(
+                function (widget) {
+                    if(widget){
+                        res.send(widget);
+                    }else{
+                        res.send('0');
+                    }
+                },
+                function (error) {
+
+                }
+            );
+    }
+
+    /**
+     * updates the given widget
+     * @param req
+     * @param res
+     */
+    function updateWidget(req, res) {
+        var widgetId = req.params.wgid;
+        var widget = req.body;
+        model.widgetModel
+            .updateWidget(widgetId, widget)
+            .then(
+                function (status) {
+                    res.send(widget);
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
+    }
+
+    /**
+     * deletes the given widget
+     * @param req
+     * @param res
+     */
+    function deleteWidget(req, res) {
+        var widgetId = req.params.wgid;
+        model.widgetModel
+            .findWidgetById(widgetId)
+            .then(
+                function (widget) {
+                    model.widgetModel
+                        .deleteWidget(widgetId)
+                        .then(
+                            function () {
+                                model.pageModel
+                                    .findPageById(widget._page)
+                                    .then(
+                                        function (page) {
+                                            model.pageModel
+                                                .deleteWidgetFromPage(page, widgetId)
+                                                .then(
+                                                    function (status) {
+                                                        res.sendStatus(200);
+                                                    },
+                                                    function (error) {
+                                                        res.sendStatus(400).message(error);
+                                                    }
+                                                );
+                                        },
+                                        function (error) {
+                                            res.sendStatus(400).message(error);
+                                        }
+                                    );
+                            },
+                            function (error) {
+                                res.sendStatus(400).message(error);
+                            }
+                        );
+                },
+                function (error) {
+                    res.sendStatus(400).message(error);
+                }
+            );
+    }
+
+    /**
+     * uploads an image
+     * @param req
+     * @param res
+     */
     function uploadImage(req, res) {
+
+
         var widgetId      = req.body.widgetId;
         var width         = req.body.width;
         var userId        = req.body.userId;
-        var websiteId     = req.body.websiteId;
+        var websiteId        = req.body.websiteId;
         var pageId        = req.body.pageId;
         var myFile        = req.file;
+
 
         var originalname  = myFile.originalname; // file name on user's computer
         var filename      = myFile.filename;     // new file name in upload folder
@@ -39,80 +185,53 @@ module.exports = function(app,model){
         var destination   = myFile.destination;  // folder where file is saved to
         var size          = myFile.size;
         var mimetype      = myFile.mimetype;
-        var widget = {};
-        widget._id = parseInt(widgetId);
-        widget.widgetType = "image";
-        widget.pageId = parseInt(pageId);
-        widget.name = req.body.name;
-        widget.text = req.body.text;
-        widget.width = width+'%';
-        widget.url =  "/uploads/" + filename;
-        widgets.push(widget);
-        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
-    }
 
-    function createWidget(req,res){
-        var widget = req.body;
+        filename += originalname;
+        fs.renameSync(path, destination + "/" + filename);
+        var url = '/assignment/uploads/'+filename;
+
         model.widgetModel
-            .createWidget(res == null?req.body.pageId:req.params.pageId, widget)
-            .then(function(widget){
-                res.json(widget);
-            });
-    }
-
-    function findAllWidgetsForPage(req,res){
-        model.widgetModel
-            .findAllWidgetsForPage(req.params.pageId)
-            .then(function(page){
-                res.json(page.widgets);
-            });
-    }
-
-    function findWidgetById(req,res){
-        model
-            .widgetModel
-            .findWidgetById(req.params.widgetId)
-            .then(
-                function (widget) {
-                    if(widget) {
-                        res.send(widget);
-                    } else {
-                        res.send('0');
-                    }
-                },
-                function (error) {
-                    res.sendStatus(400).send(error);
-                }
-            )
-    }
-
-    function updateWidget(req,res){
-        var widget = req.body;
-        model
-            .widgetModel
-            .updateWidget(req.params.widgetId, widget)
+            .uploadImage(widgetId, originalname, width, url)
             .then(
                 function (status) {
-                    res.send(200);
+                    res.redirect("/assignment/index.html#/user/"+userId+"/website/"+websiteId+"/page/"+pageId+"/widget/"+widgetId);
                 },
                 function (error) {
-                    res.sendStatus(400).send(error);
+                    res.sendStatus(400).message(error);
                 }
             );
     }
 
-    function deleteWidget(req,res){
-        model
-            .widgetModel
-            .deleteWidget(req.params.widgetId)
+
+    /**
+     * updates the index of the widget in the array to maintain the order of widgets
+     * while sorting them
+     * @param req
+     * @param res
+     */
+    function updateWidgetIndices(req, res) {
+        var initial = req.query.initial;
+        var final = req.query.final;
+        var pageId = req.params.pageId;
+
+        model.pageModel
+            .findPageById(pageId)
             .then(
-                function (status) {
-                    res.send(200);
+                function (page) {
+                    model.pageModel
+                        .reorderWidgetsForPage(page, initial, final)
+                        .then(
+                            function (status) {
+                                res.sendStatus(200);
+                            },
+                            function (error) {
+                                res.sendStatus(400);
+                            }
+                        );
                 },
                 function (error) {
-                    res.sendStatus(400).send(error);
+                    res.sendStatus(400);
                 }
-            )
+            );
     }
-
-}
+};

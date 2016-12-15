@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="WebAppMaker">
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!--Jquery-->
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <!--Angular routing-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <meta charset="UTF-8">
+    <!--Bootstrap-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--Font awesome-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
-    <script src="app.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/app.js"></script>
     <script src="config.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <!--Text angular CSS-->
+    <link href="css/textAngular.css" rel="stylesheet">
+    <!--Text angular JS-->
+    <script src="js/textAngular-rangy.min.js"></script>
+    <script src="js/textAngular-sanitize.min.js"></script>
+    <script src="js/textAngular.min.js"></script>
 
-    <script src="views/user/user.controller.client.js"></script>
-    <script src="views/page/page.controller.client.js"></script>
-    <script src="views/website/website.controller.client.js"></script>
-    <script src="views/widget/widget.controller.client.js"></script>
+    <!--user controllers-->
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
 
+    <!--website controllers-->
+    <script src="views/website/website-list.controller.client.js"></script>
+    <script src="views/website/website-new.controller.client.js"></script>
+    <script src="views/website/website-edit.controller.client.js"></script>
 
-    <script src="services/page.service.client.js"></script>
+    <!--page controllers-->
+    <script src="views/page/page-list.controller.client.js"></script>
+    <script src="views/page/page-new.controller.client.js"></script>
+    <script src="views/page/page-edit.controller.client.js"></script>
+
+    <!--widget controllers-->
+    <script src="views/widget/widget-list.controller.client.js"></script>
+    <script src="views/widget/widget-edit.controller.client.js"></script>
+    <script src="views/widget/widget-chooser.controller.client.js"></script>
+
+    <!--services-->
     <script src="services/user.service.client.js"></script>
     <script src="services/website.service.client.js"></script>
+    <script src="services/page.service.client.js"></script>
     <script src="services/widget.service.client.js"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
+    <!--Directive-->
+    <script src="directives/jga-directives.js"></script>
+
+    <title>Assignment Home Page</title>
 </head>
-<body>
-    <div ng-view></div>
+<body class="profile-padding">
+    <div ng-view>
+    </div>
 </body>
 </html>

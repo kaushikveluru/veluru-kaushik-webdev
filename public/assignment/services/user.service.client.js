@@ -1,52 +1,100 @@
+
 (function(){
     angular
         .module("WebAppMaker")
-        .factory("UserService",UserService);
+        .factory("UserService", UserService);
 
-    function UserService($http)
-    {
+    function UserService($http) {
+
         var api = {
-            "createUser":createUser,
-            "findUserById":findUserById,
-            "findUserByCredentials":findUserByCredentials,
-            "updateUser":updateUser,
-            "deleteUser":deleteUser
+            createUser: createUser,
+            findUserByID: findUserByID,
+            findUserByUserName: findUserByUserName,
+            findUserByCredentials: findUserByCredentials,
+            updateUser: updateUser,
+            deleteUser: deleteUser,
+            login: login,
+            checkLogin: checkLogin,
+            logout: logout
         };
 
         return api;
 
-        function createUser(user){
-            console.log("http post to create user")
-            return $http.post("/api/user",user);
+        function createUser(username, password) {
+            var user ={
+                username: username,
+                password: password
+            };
+            return $http.post('/api/user', user);
         }
 
-        function findUserById(userId){
-            console.log("finding user for user id at client side: "+userId)
-            var url = "/api/user/"+userId;
+        /**
+         * finds a user with the given credentials
+         * returns null if none found
+         * @param username
+         * @param password
+         * @returns {*}
+         */
+        function findUserByCredentials(username, password) {
+            var url = '/api/user?username=' + username + '&password=' +password;
             return $http.get(url);
         }
 
-
-        function findUserByCredentials(username,password){
-
-            var url = "/api/user?username="+username+"&password="+password;
-            console.log("url crated: "+url)
+        /**
+         * finds a user with given userId
+         * @param userId
+         * @returns {*}
+         */
+        function findUserByID(userId) {
+            var url = '/api/user/'+userId;
             return $http.get(url);
         }
 
-        function updateUser(userId, user){
-
-            var url = "/api/user/" + user._id;
-            $http.put(url, user);
+        /**
+         * finds a user with a given username
+         * @param username
+         * @returns {*}
+         */
+        function findUserByUserName(username) {
+            var url = '/api/user?username=' + username;
+            return $http.get(url);
         }
 
-        function deleteUser(userId){
-            var url = "/api/user/" + uid;
+        /**
+         * updates a given user
+         * @param userId
+         * @param user
+         * @returns {*}
+         */
+        function updateUser(userId, user) {
+            var url = '/api/user/'+userId;
+            return $http.put(url, user);
+        }
+
+        /**
+         * deletes a given user
+         * @param userId
+         */
+        function deleteUser(userId) {
+            var url = '/api/user/'+userId;
             return $http.delete(url);
-
         }
-
+        
+        function login(username, password) {
+            var user = {
+                username: username,
+                password: password
+            };
+            return $http.post("/api/login", user);
+        }
+        
+        
+        function checkLogin() {
+            return $http.post("/api/checkLogin");
+        }
+        
+        function logout() {
+            return $http.post("/api/logout");
+        }
     }
-
-
 })();

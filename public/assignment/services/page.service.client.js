@@ -1,50 +1,70 @@
-(function(){
+(function () {
     angular
         .module("WebAppMaker")
-        .factory("PageService",PageService)
+        .factory("PageService", PageService);
 
-    function PageService($http)
-    {
+    function PageService($http) {
 
         var api = {
-            "createPage":createPage,
-            "findPageByWebsiteId":findPageByWebsiteId,
-            "findPageById":findPageById,
-            "updatePage":updatePage,
-            "deletePage":deletePage
+            createPage: createPage,
+            findPageByWebsiteId: findPageByWebsiteId,
+            findPageById:findPageById,
+            updatePage: updatePage,
+            deletePage: deletePage
         };
 
         return api;
 
-        function createPage(websiteId, page){
-            page.websiteId = websiteId;
-            var url = "/api/website/"+websiteId+"/page";
+        /**
+         * creates a new page
+         * @param websiteId
+         * @param page
+         * @returns {*}
+         */
+        function createPage(websiteId, page) {
+            var url = '/api/website/'+websiteId+'/page';
             return $http.post(url, page);
-
         }
 
-        function findPageByWebsiteId(websiteId){
-            var url = "/api/website/"+websiteId+"/page";
+        /**
+         * finds pages by websiteId
+         * @param websiteId
+         * @returns {Array}
+         */
+        function findPageByWebsiteId(websiteId) {
+            var url = '/api/website/'+websiteId+'/page';
             return $http.get(url);
         }
 
-        function findPageById(pageId){
-
-            var url = "/api/page/"+pageId;
+        /**
+         * finds page by pageId
+         * @param pageId
+         * @returns {*}
+         */
+        function findPageById(pageId) {
+            var url = '/api/page/'+pageId;
             return $http.get(url);
         }
 
-        function updatePage(pageId,page){
-
-            var url = "/api/page/"+page._id;
+        /**
+         * updates a the given page
+         * @param pageId
+         * @param page
+         * @returns {*}
+         */
+        function updatePage(pageId, page) {
+            var url = '/api/page/'+pageId;
             return $http.put(url, page);
-
         }
 
-        function deletePage(pageId){
-            var url = "/api/page/"+pageId;
+        /**
+         * deletes a given page
+         * @param pageId
+         */
+        function deletePage(pageId) {
+            var url = '/api/page/'+pageId;
             return $http.delete(url);
         }
     }
-
 })();
+
