@@ -7,6 +7,8 @@ module.exports = function () {
     var api = {
         createUser: createUser,
         findUserById: findUserById,
+        findUserByGoogleId: findUserByGoogleId,
+        findUserByFacebookId: findUserByFacebookId,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
         updateUser: updateUser,
@@ -98,5 +100,25 @@ module.exports = function () {
         }, {
             websites: user.websites
         });
+    }
+
+    /**
+     * find user by google id
+     * @param googleId
+     * @returns {*|Query}
+     */
+    function findUserByGoogleId(googleId) {
+        return UserModel
+            .findOne({"google.id": googleId});
+    }
+
+    /**
+     * find user by facebook id
+     * @param facebookId
+     * @returns {*|Query}
+     */
+    function findUserByFacebookId(facebookId) {
+        return UserModel
+            .findOne({'facebook.id': facebookId});
     }
 };

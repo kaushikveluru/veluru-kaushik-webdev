@@ -14,8 +14,11 @@
             updateUser: updateUser,
             deleteUser: deleteUser,
             login: login,
+            register: register,
             checkLogin: checkLogin,
-            logout: logout
+            logout: logout,
+            findCurrentUser: findCurrentUser,
+            checkAdmin: checkAdmin
         };
 
         return api;
@@ -96,5 +99,23 @@
         function logout() {
             return $http.post("/api/logout");
         }
+
+        function findCurrentUser() {
+            var url = '/api/user';
+            return $http.get(url);
+        }
+
+        function checkAdmin() {
+            return $http.post("/api/checkAdmin");
+        }
+
+        function register(username, password) {
+            var user ={
+                username: username,
+                password: password
+            };
+            return $http.post("/api/register", user);
+        }
+
     }
 })();

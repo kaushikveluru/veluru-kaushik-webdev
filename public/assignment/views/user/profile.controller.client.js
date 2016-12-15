@@ -13,7 +13,8 @@
 
         function init() {
             UserService
-                .findUserByID(userId)
+                // .findUserByID(userId)
+                .findCurrentUser()
                 .success(function (user) {
                     if(user != '0'){
                         vm.user = user;

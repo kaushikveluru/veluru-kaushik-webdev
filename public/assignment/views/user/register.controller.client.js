@@ -8,6 +8,17 @@
         var vm = this;
         vm.register = register;
 
+
+        /**
+         * creates a new user if
+         * 1) the password and verifyPassword matches
+         * 2) the username does not already exists
+         * 3) if either of the above conditions are not met,
+         * it returns an appropriate error message to view
+         * @param username
+         * @param password
+         * @param verifyPassword
+         */
         function register(username, password, verifyPassword) {
             if(password != verifyPassword){
                 vm.error = "The passwords do not match";
@@ -17,7 +28,7 @@
                     .success(function (user) {
                         if(user === '0'){
                             UserService
-                                .createUser(username, password)
+                                .register(username, password)
                                 .success(function (user) {
                                     $location.url("/user/" + user._id);
                                 })

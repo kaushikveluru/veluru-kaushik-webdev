@@ -5,6 +5,12 @@
     
     function Config($routeProvider) {
         $routeProvider
+            .when("/admin", {
+                templateUrl: "views/admin/user-list.view.client.html",
+                resolve:{
+                    checkAdmin: checkAdmin
+                }
+            })
             .when("/login", {
                 templateUrl: "views/user/login.view.client.html",
                 controller: "LoginController",
@@ -14,6 +20,14 @@
                 templateUrl: "views/user/register.view.client.html",
                 controller: "RegisterController",
                 controllerAs: "model"
+            })
+            .when("/user/", {
+                templateUrl: "views/user/profile.view.client.html",
+                controller: "ProfileController",
+                controllerAs: "model",
+                resolve: {
+                    checkLogin: checkLogin
+                }
             })
             .when("/user/:uid", {
                 templateUrl: "views/user/profile.view.client.html",
@@ -76,6 +90,21 @@
             var deferred = $q.defer();
             UserService
                 .checkLogin()
+                .success(function (user) {
+                    if(user != '0'){
+                        deferred.resolve();
+                    }else{
+                        deferred.reject();
+                        $location.url("/login");
+                    }
+                });
+            return deferred.promise;
+        }
+
+        function checkAdmin($q, UserService, $location) {
+            var deferred = $q.defer();
+            UserService
+                .checkAdmin()
                 .success(function (user) {
                     if(user != '0'){
                         deferred.resolve();
